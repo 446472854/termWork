@@ -1,0 +1,49 @@
+.container {
+  .NavBar {
+    overflow: hidden;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.25);
+  }
+  margin-top: 0.234375rem + 0.390625rem;
+  padding: 0;
+  .row:nth-child(1) {
+    .NavBar {
+      margin-top: 0.234375rem;
+    }
+  }
+  .row:nth-child(2) {
+    height: calc(100vh - 0.234375rem - 0.390625rem);
+  }
+  .Tip {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h1 {
+      text-align: center;
+    }
+  }
+  .list {
+    margin: 0 0.3125rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    .title {
+      color: rgb(66, 185, 131);
+    }
+    .item {
+      width: 100%;
+      list-style-type: decimal;
+      height: 0.3125rem;
+      line-height: 0.3125rem;
+      font-size: 0.125rem;
+      border-bottom: 1px solid #eee;
+      margin-left: 0.234375rem;
+    }
+  }
+  .none {
+    display: none;
+    width: 100%;
+    text-align: center;
+  }
+}

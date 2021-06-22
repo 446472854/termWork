@@ -1,0 +1,1627 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>Vue</title>
+  <!-- 响应式库 -->
+  <link rel="stylesheet" href="./css/common/bootstrap.min.css">
+  <!-- NavBar样式 -->
+  <link rel="stylesheet" href="./css/common/NavBar.min.css">
+  <!-- 公共文本媒体查询文件 -->
+  <link rel="stylesheet" href="./css/common/media.min.css">
+  <!-- 初始化样式 -->
+  <link rel="stylesheet" href="./css/common/normalize.css">
+  <!-- 当前文件媒体查询文件 -->
+  <link rel="stylesheet" href="./css/node/node-media.css">
+  <!-- 当前文件style -->
+  <link rel="stylesheet" href="./css/node/style.min.css">
+  <link rel="stylesheet" href="./css/vue/style.css">
+  <!-- 引入高亮库 -->
+  <link rel="stylesheet" href="./highlight/styles/base16/eighties.min.css">
+
+<body>
+  <div class="container-fluid">
+    <!-- goTop 开始 -->
+    <div class="goTop"><img src="./img/goTop.png" alt=""></div>
+    <!-- goTop 结束 -->
+    <!-- 导航栏开始 -->
+    <div class="row">
+      <div class="NavBar">
+        <div class="Nav_Left">
+          <p class="qs">QS</p>
+        </div>
+        <div class="Nav_Right">
+          <ul>
+            <li class="search">
+              <input type="text" placeholder="Search">
+            </li>
+            <li class="learn">
+              学习笔记 </li>
+            <li class="Node"><a href="./node.html">Node</a></li>
+            <li class="Vue"><a href="./vue.html">Vue</a></li>
+            <li class="React"><a href="./react.html">React</a></li>
+          </ul>
+        </div>
+        <div class="Nav_Center">
+          <input type="text" placeholder="Search">
+        </div>
+        <div class="Nav_End">
+          <img src="./img/more.png" alt="">
+        </div>
+      </div>
+    </div>
+    <!-- 导航栏结束 -->
+
+    <!-- 侧边栏开始  -->
+    <div class="sliderBar">
+      <div class="title">
+        <h3>Vue3.x 笔记</h3>
+      </div>
+      <div class="feedback">
+        <a href="./feedback.html" target="_black">反馈</a>
+      </div>
+    </div>
+    <!-- 侧边栏结束  -->
+    <!-- 主体内容开始 -->
+    <div class="content">
+      <div class="title">学习笔记</div>
+      <!-- #C1 -->
+      <div class="C">
+        <h1 id="C1"></h1>
+        <div class="explain">
+          <p id="C1-1">Typescript 介绍</p>
+          <pre><code class="js">- TtypeScript 是一种由微软开发的开源 跨平台的编程语言, 是JavaScript的超集, 最终都会被编译成JavaScript
+- 2012年10月, 微软公布了,首个公开版本的typeScript, 2013年6月19日, 发布了正式版
+- TypeScript的作者时 安德斯 海尔斯伯格, C#的首席架构师,
+- TypeScript 扩展了JavaScript语法, 所有任何现有的JavaScript程序都可以运行在TypeScript 环境中
+- TypeScript 时为大型引用开发而设计的, 并且可以编译为JavaScript 
+- TypeScript 是 JavaScript的一个超集, 主要提供了类型系统,和对ES6+ 的支持, 他由Microsoft 开发, 代码开源在Github上&lt
+</code></pre>
+        </div>
+        <div class="explain">
+          <p id="C1-2">TypeScript 特点
+          <pre><code class="js">
+- 始于JavaScript , 归于JavaScript
+    TypeScript 可以编译处纯净 简介的JavaScript代码, 并且可以运行在任何浏览器上, Node.js 环境和任何支持ECMAscipt3 或者更高版本的JavaScript引擎中
+ - 强大的类型系统
+     类型系统允许JavaScript开发者在开发JavaScript 应用程序时使用高效的开发工具和常用操作, 比如静态检查 代码重构
+ - 先进的JavaScript
+      TypeScript 时提供最新的 和 不断发展的JavaScript特性, 包括那些来自2015年的ECMAscript 的和 未来提案的特性, 比如异步功能和 Decorators , 
+              </code></pre>
+          <p id="C1-3">安装TypeScript </p>
+          <pre><code class="js">
+npm install -g typescript
+// 查看typescript 的版本
+tsc -v</code></pre>
+          </p>
+          <p id="C1-4">编译js 代码</p>
+          <pre><code class="js">
+tsc ts文件名</code></pre>
+        </div>
+      </div>
+      <!-- #C2 -->
+      <div class="C">
+        <h1 id="C2"></h1>
+        <div class="explain">
+          <p id="C2-1">使用tsc
+          <pre><code class="js">
+tsc ts文件名</code></pre>
+          </p>
+        </div>
+        <div class="explain">
+          <p id="C2-2"> 自动编译ts文件
+          <pre><code class="js">
+tsc --init 
+终端 -> 执行任务 -> 构建(只生成一次)  监视(每一次修改文件都会重新打包)</code></pre>
+          </p>
+        </div>
+        <div class="explain">
+          <p id="C2-3"> 使用webpack 进行打包
+            <em>
+              tsc --init (不需要进行额外的配置)
+            </em>
+            <em>安装webpack 的依赖</em>
+          <pre><code class="js">
+- cnpm install webpack@4.41.5 webpack-cli@3.3.10 webpack-dev-server@3.10.2 -D
+- cnpm install -D html-webpack-plugin@4.5.0  clean-webpack-plugin@3.0.0  ts-loader@8.0.11 cross-env@7.0.2</code></pre>
+          <em>代码</em>
+          <pre><code class="js">
+在 webpack. config.js中
+const {
+  CleanWebpackPlugin
+} = require('clean-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const path = require('path')
+
+const isProd = process.env.NODE_ENV === 'production' // 是否生产环境
+
+function resolve(dir) {
+  return path.resolve(__dirname, '..', dir)
+}
+
+module.exports = {
+  mode: isProd ? 'production' : 'development',
+  entry: {
+    app: './src/main.ts'
+  },
+
+  output: {
+    path: resolve('dist'),
+    filename: '[name].[contenthash:8].js'
+  },
+
+  module: {
+    rules: [{
+      test: /\.tsx?$/,
+      use: 'ts-loader',
+      include: [resolve('src')]
+    }]
+  },
+
+  plugins: [
+    new CleanWebpackPlugin({}),
+
+    new HtmlWebpackPlugin({
+      template: './public/index.html'
+    })
+  ],
+
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js']
+  },
+
+  devtool: isProd ? 'cheap-module-source-map' : 'cheap-module-eval-source-map',
+
+  devServer: {
+    host: 'localhost', // 主机名
+    stats: 'errors-only', // 打包日志输出输出错误信息
+    port: 8081,
+    open: true
+  },
+}</code></pre>
+          </p>
+        </div>
+        <div class="explain">
+          <p id="C2-4">打包命令
+          <pre><code class="js">"dev": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.js",
+"build": "cross-env NODE_ENV=production webpack --config build/webpack.config.js"</code></pre>
+          </p>
+        </div>
+      </div>
+      <!-- #C3 -->
+      <div class="C">
+        <h1 id="C3"></h1>
+        <h4 id="C3-1"> TypeScript 支持JavaScript的全部数据类型, 此外还有自己另外的数据类型</h4>
+        <pre><code class="js">
+let 变量名:数据类型 = 变量值 </code></pre>
+        <div class="explain">
+          <p id="C31">布尔值(boolean)
+          <pre><code class="js">
+  //数值(number): Typescript 和 JavaScript中的数字都是浮点型, 类型是Number, 除了支持十进制和十六进制字面量, TypeScript 和 ECMAScript 2015 中引入的二进制和八进制字面量
+  let n1:number = 12
+  let n2:number = 0b1010
+  let n3:number = 0o123
+  let n4:number = 0x123</code></pre>
+          </p>
+          <p id="C32"> 字符型(string)：表示文本类型, 双引号 单引号 反引号
+          <pre><code class="js">
+let s1:string = '123'
+let s1:string = "123"
+let s1:string = `123`</code></pre>
+          </p>
+          <p id="C33">数组类型(array): 数据定义之后里面的值类型不能被改变
+          <pre><code class="js">
+1- let 变量名:数据类型[] = [值列表] 
+let a1:string[] =['1','2']
+2- let 变量名;Array&lt;数据类型&gt; = [值列表] 泛型写法
+let a2:Array&lt;numher&gt; = [1,2,3]</code></pre>
+          </p>
+          <p id="C34">元组类型： 在定义数组之后， 类型，数据的个数和位置一开始就已经确定了
+          <pre><code class="js">
+let 变量名：[类型列表] = [值列表]
+let a3:[string,number] =['1',2]
+// 注意：数据类型和值的位置要一一对应</code></pre>
+          </p>
+          <p id="C35">枚举类型(enum 可以是中文的数据值) ： 枚举类型中的每个数据值都可以叫元素， 每一个元素都有自己的编号， 从0开始， 依次递增
+          <pre><code class="js">
+enum color{
+  red, 
+  white, 
+  black,
+  pink = 100  // 可以修改元素编号的值
+  }
+  let c1:color = color.red
+  console.log(c1)  // 0
+  consoe.log(color[0])  // red   </code></pre>
+          </p>
+          <p id="C36">any , 对于不清楚类型的变量指定一个变量, 来自动态的内容
+          <pre><code class="js">
+// 一个数组中包含不=不同类型的数据
+let arr2:any = [1,'2',null, undefined]</code></pre>
+          </p>
+          <p id="C37">void , 在某种程度来说于 any 类型相反,表示没有任何类型, 当一个函数没有返回值时, 类型时void
+          <pre><code class="js">
+ // 声明一个void 的变量没有什么作用, 因为只能赋予  null  undefiend 
+let v1:void = any
+let v1:void = undefined
+function showMsg():void{
+	console.log('我没有返回值')
+}</code></pre>
+          </p>
+          <p id="C38">object 表示非原始类型(string number boolean ) 的类型
+          <pre><code class="js">
+function showMsg(obj:object):object{
+  console.log(obj)
+  return {
+  name:"夏红",
+    age:19
+  }
+ }		
+console.log(ShowObject({}));  // 可以
+console.log(ShowObject(new String('')));  // 可以
+console.log(ShowObject(String));  // 可以</code></pre>
+          </p>
+          <p id="c39">联合数据类型( Union Types ) 表示取值可以为多种类型中的一种
+          <pre><code class="js">
+function More(a:number|string):void{
+  console.log(a.toString())
+} </code></pre>
+          </p>
+          <p id="310">类型断言 为变量指定判断的数据类型
+          <pre><code class="js">
+function  ShowType(a:number|string) {
+    if((&lt;string&gt;a).length){
+      console.log((a as string).length);
+    }else{
+      console.log(a.toString().length);
+    }
+}
+ShowType(123)</code></pre>
+          </p>
+          <p id="311">类型推断 ( TS会在没有明确指定类型的时候推测出一个类型 )
+          <pre><code class="s">
+let a = 10  // 推测为 number
+a = '123' 报错
+let b; // 推测为 any</code></pre>
+          </p>
+        </div>
+      </div>
+      <!-- #C4 -->
+      <div class="C C4">
+        <h1 id="C4"></h1>
+        <div class="explain">
+          <p id="C4-1">释义
+            <em>对值所具有的接口进行类型检查, 使用接口来定义对象的类型
+              <i>类型检查器非检查对象内部的属性是否与接口描述一致, 如果不一致会提示类型错误</i>
+            </em>
+          <pre><code class="js">
+interface IPerson{
+  readonly id: number  // 只读属性
+  name:string
+  age:number
+  sex:string  // 可选属性
+}
+let p1:IPerson = {
+  id:1,
+  name:"夏红",
+  age:19
+}</code></pre>
+          </p>
+          <p id="C4-2">函数类型
+            <em>接口能够描述JavaScript中对象拥有的各种的外形</em>
+            <em>描述带有属性的普通对象外, 还可以描述对象的类型</em>
+            <em>为了使用接口表示函数类型，我们需要给接口定义一个调用签名。它就像是一个只有参数列表和返回值类型的函数定义。参数列表里的每个参数都需要名字和类型</em>
+          <pre><code class="js">
+ interface funcRule{
+    // 定义一个调用签名
+ (oldValue:string, newValue?:string):string
+ }
+ let fun1:funcRule = function (oldValue:string, newValue:string):string {
+   return oldValue + '-' + newValue
+ }
+ let fun2:funcRule = function(oldValue){
+   return oldValue + '我是奥力给'
+ }
+ console.log(fun2('你是奥力给'));
+ console.log(fun1('爱心','觉罗'));</code></pre>
+          </p>
+          <p id="C4-3">类类型
+            <em style="font-size: 14px;">--> 接口和接口之间时继承( extends )</em>
+            <em style="font-size: 14px;">--> 类和接口之间是实现( implements )</em>
+            <em>类实现接口</em>
+          <pre><code class="js">
+类类型: 实现接口
+1. 一个类可以实现多个接口
+2. 一个接口可以继承多个接口
+*/
+interface Alarm {
+  alert(): any;
+}
+class Car implements Alarm {
+  alert() {
+      console.log('Car alert');
+  }
+} </code></pre>
+          <em>一个类实现多个接口</em>
+          <pre><code class="js">
+interface Alarm {
+  alert():any
+}
+interface Light{
+    Light()
+}
+class Car2 implements Alarm, Light {
+  alert() {
+    console.log('Car alert');
+  }
+  Light(){
+      console.log('我在发光')
+  }
+}</code></pre>
+          </p>
+          <p id="C4-4">接口继承接口
+          <pre><code class="js">
+interface AllInter extends Alarm, Light{}</code></pre>
+          </p>
+        </div>
+      </div>
+      <!-- #C5 -->
+      <div class="C">
+        <h1 id="C5"></h1>
+        <div class="explain">
+          <p id="C5-1"> 类的使用
+            <em>和JavaScript 中的几乎一样, 只是需要指定类型</em>
+            <em>可以使用this</em>
+          <pre><code class="js">
+(() => {
+// 类
+class Person {
+    // 定义属性
+  name: string
+  age: number
+  sex: string
+    // 定义构造函数
+  constructor(name: string, age: number, sex: string) {
+    this.name = name
+    this.age = age
+    this.sex = sex
+  }
+  sayHi() {
+    console.log(`我是${this.name}. 我几年已经${this.age}岁了, 是一个${this.sex} 孩子 `);
+  }
+}
+// 实例化对象
+const p1 = new Person('小浣熊',16,'男')
+console.log(p1.name);
+p1.sayHi()
+ })()</code></pre>
+          </p>
+          <p id="C5-2">继承 --> 类与类之间的关系
+            <em>子类 --> 派生类</em>
+            <em>基类 --> 超类 ( 父类 ) </em>
+            <em>一旦出现了继承, 就出现了父子关系</em>
+            <em>类与类之间的继承关系, 通过extends 关键字</em>
+            <em>子类中可以调用父类中的构造函数, 使用的super 关键字,, 包括父类中的实例方法, 但是不可以直接调用父类的方法, 通过 super.方法名</em>
+            <em>子类可以重写父类的方法</em>
+          <pre><code class="js">
+class Student extends Person{
+  constructor(name:string, age:number, sex:string){
+    super(name, age, sex)
+  }
+    sayHi(){
+       console.log('我是之类的中的sayHi')
+  super.saiHi()  // 可以调用父类的函数
+    }
+}
+const s1 = new Student('奥力给',16,'女')
+console.log(s1)
+s1.sayHi()</code></pre>
+          </p>
+          <p id="C5-3">成员修饰符 ( 描述成员 ( 属性 , 方法, 构造函数 ) 的可访问性 )
+            <em>类的成员有默认的修饰符 </em>
+            <em>private ( 外部无法访问内部的成员 , 子类中也无法访问这个成员)</em>
+            <em>public ( 代表的是公共的, 任何位置都可以访问内部的成员 )</em>
+            <em>protected ( 外部无法访问内部的成员, 但是在父类和子类的中的内部可以访问protected 修饰的属性 )</em>
+          <pre><code class="js">
+class New {
+  public name:string
+  public constructor (name:string){
+    this.name = name
+    }
+  public eat(){
+    console.log('这个玩意儿真好吃',this.name)
+  }
+}
+const n1 = new New('骨头') </code></pre>
+          <em>readonly ( 对类中的属性成员进行修饰, 表示在外部不能随意的修改此属性 )</em>
+          <em>构造函数中可以对 readonly 修饰的属性进行修改</em>
+          <pre><code class="js">
+class FO {
+  readonly id:number = 2
+  constructor(id:number){
+  this.id = id
+  }
+}
+const f1:FO = new FO(1)
+f1.id = 2//  报错 , id被readonly 修饰, 不能被随意的修改</code></pre>
+          <em>构造函数中的参数, 使用readonly 修饰, 该参数可以称为 参数属性</em>
+          <em>构造函数中的参数, 使用readonly , 那么在Person 中就有了一个该参数的属性成员</em>
+          <em>参数属性也无法被外部修改</em>
+          <em>同理, public protected private 都如此</em>
+          <pre><code class="js">
+ class FO{
+   constructor(readonly name:string = '小红'){  // 默认参数
+     this.name = name  // 不需要这句话, 在构造函数或者是实例中一样存在这个属性成员
+   }
+ }
+const f2:FO = new FO('小甜甜')</code></pre>
+
+          </p>
+          <p id="C5-4">存取器
+          <pre><code class="js">
+class IO{
+  firstName:string
+  lastName:string
+  constructor(firstName:string, lastName:string){
+    this.firstName = firstName
+    this.lastName = lastName
+  }
+   // 读取设置
+  get fullName(){
+      return this.firstName + '-' + this.lastName
+  }
+   // 写入设置
+  set fullName(oldValue){
+      let tmp = oldValue.split('-')
+      this.firstName = tmp[0]
+      this.lastName = tmp[1]
+  }
+   
+}
+const io1 = new IO('东方','不败')
+io1.fullName = '黄浦-奥力给'
+console.log(io1.fullName);</code></pre>
+          </p>
+          <p id="C5-5">静态成员 -- 通过static 修饰的属性和方法
+            <em>仅存在类本身而不存在类的实例上</em>
+          <pre><code class="js">
+  class Person{
+    static age:number = 12
+    // static constructor(){}  // 构造函数不能够通过static 修饰
+    static sayHi(){
+      console.log("你好")
+    }
+  }
+  // 静态成员不能够通过this  和 实例对象访问
+  const p1 = new Person()
+  console.log(p1.age) // 报错 
+  console.log(Person.age)  // success</code></pre>
+          </p>
+          <p id="C5-6">抽象类 利用abstract 修饰的
+            <em>抽象的方法不能够有任何的实现</em>
+            <em>抽象的方法不能够被实例化</em>
+            <em>很少在抽象类中的使用抽象属性</em>
+          <pre><code class="js">
+// 定义抽象类
+abstract class Animal{
+ 	// 抽象方法不能够有实现
+	abstract eat()
+}
+class Dog extends Animal{
+    // 对Animal 的eat 的实现
+	eat(){
+		console.log('我爱吃奥利给')
+	}
+}
+// 实例化Dog
+const dog : Dog = new Dog()
+// 调用的是抽象类中的eat 方法
+dog.eat() </code></pre>
+          </p>
+        </div>
+      </div>
+      <!-- #C6 -->
+      <div class="C">
+        <h1 id="C6"></h1>
+        <div class="explain">
+          <p id="C6-1">命名函数
+          <pre><code class="js">
+function main(x:number, y:number):number{
+  return x + y
+}
+main(1,4) </code></pre>
+          </p>
+          <p id="C6-2"> 匿名函数
+          <pre><code class="js">
+// 定义函数签名
+interface Add{
+    (x:number, y:number) => number
+}
+let add: Add = function(x:number, y:number):number{
+	return x + y
+} </code></pre>
+          <pre><code class="js">
+// 使用标签属性
+render(){
+const {name, age} = this.info
+	return (
+		&lt;ul&gt;
+			&lt;li&gt;{name}&lt;/li&gt;
+			&lt;li&gt;{age}&lt;/li&gt;
+		&lt;/ul&gt;
+	)
+}
+// jsx 中没有数据类型, 使用{} 包含数字
+ReactDOM.render(&lt;/ Com name="奥力给" age={19}&gt;, 标签)
+
+// 使用对象语法
+render(){
+const {name, age} = this.info
+	return (
+		&lt;ul&gt;
+			&lt;li&gt;{name}&lt;/li&gt;
+			&lt;li&gt;{age}&lt;/li&gt;
+		&lt;/ul&gt;
+	)
+}
+const info = {name:'奥力给',age:10}
+// 这里的{...info}  花括号是React的表达式语法, ...info 并不能展开对象, 但是于babel 和 react 让... 可以展开对象
+ReactDOM.render(&lt;/ Com {...info}&gt;, 标签)
+            </code></pre>
+          </p>
+          <p id="C6-3">函数的完整写法
+          <pre><code class="js">
+let imp:(x:number, y:number) => number = function(x:number, y:number):number{
+       return x + y
+}</code></pre>
+          <em>默认值</em>
+          <pre><code class="js">
+Com.defaultProps = {
+  age:10,
+  sex:"男"
+
+}</code></pre>
+          </p>
+          <p id="C6-4">默认参数 和 可选参数
+            <em>默认参数: 函数的参数有默认值 x:string = '默认值' </em>
+            <em>可选参数: 函数的参数不是必须要的 x?:string</em>
+          <pre><code class="js">
+let getFullName = function(firstNaem:string='皇甫', lastName?:string):string{
+  if(lastName){
+    return firstName + lastName
+  }else{
+    return firstName
+  }
+}</code></pre>
+          </p>
+          <p id="C6-5">剩余参数( rest 参数 )
+            <em>
+              通过操作多个参数时, 但是不知道具体的参数个数, JavaScript中使用arguments 来获得
+            </em>
+            <em>TypeScript 中把参数集成到一个变量中, 使用扩展合并运算符
+            </em>
+            <em>剩余参数在函数的参数中的最后一个</em>
+          <pre><code class="js">
+ function rest(a:string, ...b:string[]){
+     console.log(a)
+     console.log(b)
+ }
+ rest('1','2','3','4')</code></pre>
+          </p>
+          <p id="C6-6">函数重载
+            <em>
+              函数的参数有多个类型, 参数的个数不同
+            </em>
+          <pre><code class="js">
+function load (x:string, y:string){}
+function load (x:number, y:number){}
+function load(x:number | string, y:number | string):number | string{
+	if(typeof a == 'string' && typeof y =='string'){
+		return x + y
+	}else if(typeof x == 'number' && typeof y == 'number'){	
+		return x + y
+	}
+}</code></pre>
+          </p>
+        </div>
+      </div>
+      <!-- #C7 -->
+      <div class="C">
+        <h1 id="C7"></h1>
+        <div class="explain">
+          <p id="C7-1"> 多个泛型参数的函数
+          <pre><code class="js">
+ // 函数的类型是 [K,V] 第一个成员类型是Ｋ，　第二个成员类型是Ｖ
+ function getMsg&lt;K, V&gt;(str:string, value:number):[K,V]{
+   return [str,value]
+ }
+ console.log(getMsg&lt;string, number&gt;('123',2))</code></pre>
+          </p>
+          <p id="C7-2">泛型接口
+            <em>在定义泛型接口时，　为接口中的属性或方法定义泛型类型</em>
+            <em>在使用接口时，在指定具体的泛型类型</em>
+          <pre><code class="js">
+// 定义接口  类型是一个class
+interface Iper&lt;T&gt; {
+  data:t[]
+  add:(t:T) =&gt; void
+  getUserId(id:number) =&gt; T
+}
+// 定义class 
+class user{
+  id?:number
+  name:string
+  age:number
+  constructor(name:string, age:number){
+    this.name = name
+    this.age = age
+  }
+}
+// 定义一个类 被 Iper约束, Iper的类型是user类
+class userCUDS implements Iper&lt;user&gt;{
+  data:&lt;user&gt;[] = []
+  add(t:user):void{
+    user = {...t, id:Date.now()}
+    this.data.push(user)
+  }
+  getUserId(id:number):user{
+    return this.data.find(s =&gt; s.id = id)
+  }
+}
+cost userC = new userCUDS()
+userC.add(new user('Tom',123))</code></pre>
+          </p>
+          <p id="C7-3">泛型类
+            <em>为类中的属性和方法定义泛型类型, 是在创建类的实例时, 再指定特定的泛型类型</em>
+          <pre><code class="js">
+class genericNumber&lt;T,A&gt;{
+  name: T
+  age: A
+}
+const Gener: genericNumber&lt;string,number&gt; = new genericNumber&lt;string,number&gt;()
+Gener.name = '小红'
+console.log(Gener.name); </code></pre>
+          </p>
+          <p id="C7-4">泛型约束
+          <pre><code class="js">
+// 必须传入一拥有lenght 属性的参数
+interface Ilength{
+  length:number
+}
+function test &gt;T extends Ilength&gt;(x:T):number {
+  return x.length
+}
+console.log(test('123123')); </code></pre>
+          </p>
+        </div>
+      </div>
+      <!-- #C8 -->
+      <div class="C">
+        <h1 id="C8"></h1>
+        <p id="C8-1">声明语句
+          <em>declare var 语句</em>
+        <pre><code class="js">
+import jqueyr from './node_modules/_jquery@3.6.0@jquery/dist/jquery.js'
+declare var jquery: (selector: string) => any </code></pre>
+        <em>引入type 文件</em>
+        <pre><code class="js">
+cnpm install @types/jquery --save-dev  // 安装type 包
+import jquery from './node_modules/_@types_jquery@3.5.5@@types/jquery/dist/jquery.slim'
+jquery('asd') </code></pre>
+        </p>
+        <p>在定义函数 接口 类的时候不能预先确定使用数据的类型, 而是在使用的时候才确定的</p>
+        <pre><code class="js">
+&lt;T&gt; 动态传入类型
+function add&lt;T&gt;(a:T, count:number):T[]{
+  // 	let arr:T[] = []  两种方式都可以
+  let arr:Array&lt;T&gt; = []
+   for(let i = 0 ; i &lt; count ; i++){
+    arr.push(a)
+     }
+    return arr	
+} 
+如果使用any的话, 在对返回的值进行操作的时候, 没有对应的数据提示</code></pre>
+
+      </div>
+      <!-- #C9 -->
+      <div class="C">
+        <h1 id="C9"></h1>
+        <div class="explain">
+          <div class="explain">
+            <p id="C9-1">TypeScript内置对象
+              <em>大写的是对象, 小写的数据类型</em>
+            <pre><code class="js">
+  let b:Boolean = new Boolean(1)
+  let s:String = new String('123')
+  let n:Number = new Number(1)
+  let d:Date = new Date()
+  let E:RegExp = /^123$/
+  let e:Error = new Error('发出了一个错误') </code></pre>
+            </p>
+            <p id="C9-2">DOM 内置对象
+            <pre><code class="js">
+  window 浏览器对象
+  document 文档对象
+  HTMLElement HTML 元素对象
+  DocumentFragment 文档片段接口, 作为一个小的document 对象出现
+  Event 事件对象
+  NodeList 节点对象
+  
+  let father:HTMLElement = document.querySelector('.father')
+  let son:NodeList = document.querySelectorAll('.son')
+  father.addEventListener('click',(Event:MouseEvent) => {
+    console.log(Event)
+  })
+  let fragment = document.createDocumentFraagment()
+  console.log(fragment)  </code></pre>
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- #C10 -->
+      <div class="C">
+        <h1 id="C10"></h1>
+        <div class="explain">
+          <p id="C10-1"> 介绍
+          <pre><code class="js">
+1. 支持vue2 的大多数特性, 更好的支持TypeScript
+2. 性能提升
+   - 打包减少41%
+   - 初次渲染快55%, 更新渲染133%
+   - 内存减少54%
+   - 使用Proxy 代替 defineProperty 获取数据响应模式
+   - 重写虚拟DOM 的实现和 Tree-shaking ( 树摇 )
+3. 新增特性
+   1. setup
+      - ref 和 reactive 
+      - computed 和 watch
+      - 新的声明周期函数
+      - provide 和 inject
+      - ...
+   2. 新组件
+      - Fragment  文档碎片
+      - Teleport 瞬移组件的位置
+      - Suspense 异步加载组件的loading 界面
+   3. 其他APi 更新
+      - 全局APi 的更改
+      - 将原来的全局API转移到应用对象
+      - 模板语法变化 </code></pre>
+          </p>
+          <p id="C10-2"> 创建Vue3项目
+            <em>vue create 项目名字</em>
+            <em>使用vite --- https://cn.vitejs.dev/</em>
+          <pre><code class="js">
+npm init vite-app &lt;project Name&gt;
+cd 目录
+npm install   cnpm install
+npm run dev
+
+vite 是一个由原生ESM 驱动的Web 开发构建工具, 再开发环境下基于ES imports 开发
+做到了 本地快速开发启动  在生产环境下语句RollUp 打包
+ 1- 快速冷启动, 不需要等待打包模板
+ 2- 即使的热模块更新, 替换性能和模块数量的结构让更新起飞
+ 3- 真正的按需编译, 不在等待整个应用编译完成, 这是一个巨大的改变</code></pre>
+          </p>
+          <p id="C10-3">Vue3 是如何变快的
+          <pre><code class="js">
+1. diff 算法的优化
+   - Vue3中新增了静态标记( PatchFlag )
+   - 与其上次虚拟节点进行对比时候, 只对比带有Path Flag  的节点
+   - 并且可以通过flag的信息得知当前节点对比的具体内容
+2. hoistStatic 静态提升
+   - Vue3 中对于不参与更新的元素, 只会被创建一次, 之后会在每次渲染的时候不停的复用
+3. cacheHandlers   事件侦听缓存
+   - 默认形况下onClick 会被视为动态绑定, 所以每次都会区追踪它的变化, 但是因为是同一个函数, 所以没有追踪变化, 直接缓存起来复用即可
+4. ssr 渲染
+   - 当有大量静态的内容时候, 这些内容会被当做纯字符串推进一个buffer 里面, 即使存在的动态的绑定, 会通过模板插值嵌入进去, 
+   - 当静态内容大到一定量级的时候, 会用_createStaticVNode放在在客户端去生成一个static node , 这些静态 node , 会被直接innerHTML , 就不需要创建对象, 然后根据对象渲染 </code></pre>
+          </p>
+        </div>
+      </div>
+      <!-- #C11 -->
+      <div class="C">
+        <h1 id="C1-1"></h1>
+        <div class="explain">
+          <p id="C11-1"> 介绍
+            <em>Vite 是Vue作者开发的一款意图取代webpack 的开发工具
+            </em>
+            <em>实现原理: 利用ES6 的import会发送请求去加载文件的特性, 拦截这些请求, 做一些预编译, 省去Webpack 冗长的打包时间</em>
+          </p>
+          <p id="C11-2">使用
+          <pre><code class="js">
+1. 安装Vite 
+   npm install -g craete -vite-app
+2. 利用Vite 创建项目
+   create-vite-app projectName
+3. 安装依赖运行项目
+   cd projectName
+   nm install   cnpm install 
+   npm run dev</code></pre>
+          </p>
+        </div>
+      </div>
+      <!-- #C12 -->
+      <div class="C">
+        <h1 id="C12"></h1>
+        <h3 id="C12-1">setup</h3>
+        <pre><code class="js">
+- 新的option, 所有的组件API函数都在此使用一次, 只在初始化执行一次, 函数如果返回对象, 对象中的属性或方法, 模板中可以直接使用
+- setup 中的方法和属性会在执行完成后注入到data , method, computed , watch 等组件中
+        </code></pre>
+        <div class="explain">
+          <p id="C12-11">setup 的执行
+          <pre><code class="js">
+- 在beforeCreate 之前执行, 此时组件对象未创建
+- 证明**: this 是 undefined,** 不能通过this 访问 data computed methods props 
+- 所有的 Composition API 都不能够使用this访问
+            </code></pre>
+          </p>
+          <p id="C12-12">setup 返回值
+          <pre><code class="js">
+- 返回对象种的属性会和data 函数中返回的合并称为组件对象的属性
+- 方法会和methods 中的方法合并, 如果同名, setup优先
+  1. 一般不同名, methods 中可以访问 setup 提供的方法和函数
+  2. setup 中不能访问data 和 methods 
+  3. setup 不可以是一个 async 函数, 因为返回值不是return 对象, 而是 promise , 模板看不懂return 对象中的属性数据</code></pre>
+          </p>
+          <p id="C12-13"></p>setup 参数
+          <pre><code class="js">
+setup( props, context )  /  setup( props,{attrs, slots, emit} )
+  1. props 父级向子级传递的数据, 是用props 接受到的所有数据
+  2. attrs: 获取当前组件标签上的属性, 是没有在porps 声明的
+  3. slots: 包含所有传入的插槽内容, 相当 this.$slots
+  4. emit: 用来分发自定义事件的函数;  相当this.$emit
+           
+// props 
+&lt;child :count="count"&gt;&lt;/child&gt;  
+// attrs
+&lt;child data-eat="eat"&gt;&lt;/child&gt;
+// emit  监听事件
+&lt;father&gt;
+    &lt;child @ParentAlert="ParentAlert"&gt; &lt;/child&gt;
+&lt;/father&gt;
+// child文件
+&lt;script&gt;
+  export default defineComponents({
+    setup(props, context) {
+      function Alert() {
+        context.emit('我是一只猪')
+      }
+      return {
+        Alert
+      }
+    }
+  })
+&lt;/script&gt;</code></pre>
+          <h3 id="C12-3">ref</h3>
+          <p id="C12-31">ref 一般用于定义基本数据类型
+            <em>如果利用ref 将数据变成响应式数据, 是不会影响到原始数据的</em>
+          <pre><code class="js">
+const obj = {
+  name:"张三"
+}
+const obj1 = ref(obj)
+obj1.name = '奥力给'
+// 此时的obj.name 还是张三, 
+// obj 和 obj1 已经没有了引用关系
+
+import {ref} from 'vue'
+作用: 定义一个响应式的数据
+语法: const xxx= ref(Value)
+    创建一个包含响应式数据的引用( reference )对象
+    js中操作数据的  xxx.value
+    模板中操作数据: xxx
+一般用来定义一个基本类型的响应式数据</code></pre>
+          </p>
+          <p id="C12-32">ref 获取DOM 元素
+          <pre><code class="js">
+&lt;template&gt;
+  &lt;div ref="box" &gt;我box&lt;/div&gt;
+  &lt;/template&gt;
+  &lt;script&gt;
+  export default defineComponent({
+      setup(){
+          // 因为在setup 中组件还没有被渲染, 需要在onMounted 中
+         ouMounted(() =&gt; {
+       // 将box 返回出去之后, 模板被渲染完成之后, 就会将div 赋值给box
+          const box = ref(null)
+         })
+          return {
+              box
+          }
+      } 
+  })
+&lt;/script&gt; </code></pre>
+          </p>
+          <h3 id="C12-5"> reactive</h3>
+          <p>定义复杂数据类型的响应式</p>
+          <p>语法: const xxx = reactive( obj ), 接受一个普通对象, 然后返回该普通对象的响应式代理器对象</p>
+          <p>响应式转换时"<b>深层的</b> ", 会影响内部所有嵌套的属性</p>
+          <p>内部基于ES6的 Proxy 实现, 通过代理对象操作源对象内部数据都是响应式的</p>
+          <p>如果为reactive 传入了其他的对象( 除json / arr ), 只能够重新赋值</p>
+          <p>利用reactive 将数据变成响应式数据, 原始数据和响应式数据是引用关系, 如果一方修改, 另一方也会修改</p>
+          <pre><code class="js">
+// state 中的对象是Date 对象, 如果想响应式更新, 只能够对对象进行重新赋值
+&lt;script&gt;
+    const state = reactive({
+	time: new Date()
+})
+function updateDate(){
+	// 用之前时间对象重新创建一个
+	let temp = new Date(state.time.getTime())
+    // 将之前的日期加1
+	temp.setDate(temp.getDate() + 1)
+    // 重新赋值
+	state.time = temp
+}
+&lt;/scripr&gt; </code></pre>
+          <p>总体代码</p>
+          <pre><code class="js">
+&lt;script&gt;&gt;
+  import { ref, reactive } from "vue";
+  export default {
+    name: "App",
+    // setup 是组合API 的入口  返回一个对象
+    setup() {
+      // 此时的数据不是响应式的数据,
+      // 用ref 定义的数据才是响应式数据
+      // count 的类型是ref 类型
+      let count = ref(0);
+      function increment() {
+        count.value++;
+      }
+      function updateName() {
+        user.name = "奥力给";
+      }
+      function addGender() {
+        user.gender = '男' // 会影响界面的更新
+        obj.gender = '男'  // 不会影响界面的更新
+      }
+      function delName() {
+        delete obj.name  // 界面无变化
+        delete user.name  // 界面变化
+      }
+      const obj = {
+        name: "小明",
+        age: 20,
+        wife: {
+          name: "小红",
+          age: 1,
+          cars: ["奔驰", "牛马"],
+        },
+      };
+      // reactive 返回的是代理对象
+      // user 是代理对象, 被代理的目标对象是obj对象
+      // 直接使用目标对象的属性是不可能的, 只能通过代理对象的方式来更新数据
+      // user 对象的类型是 Proxy
+      const user = reactive(obj);
+      console.log(user);
+      return {
+        count,
+        // 暴露方法
+        increment,
+        user,
+        updateName,
+      };
+    },
+    methods: {
+      ment() {
+        this.count++;
+      },
+    },
+  };
+&lt;/script&gt;
+          </code></pre>
+          <h3 id="C12-6">比较Vue2 和 Vue3的响应式</h3>
+          <p id="C12-61">Vue2的响应式
+          <pre><code class="js">
+- 核心
+  1. 对象：通过defineProperty 对对象的已有属性值的读取和修改进行劫持 ( 监视 / 拦截 )
+  2. 数组:   通过重写数组更新数组一系列更新元素的方法来实现元素修改的劫持
+- 问题: 
+  1. 对象直接修改添加的属性或, 删除属性已有属性, 界面不会自动更新
+  2. 直接通过下标替换元素或更新length, 界面不会自动更新</code></pre>
+          </p>
+          <p id="C12-62">Vue3 的响应式</p>
+          <pre><code class="js">
+核心
+1. 通过Proxy 代理: 拦截对 data 任意属性的任意( 13 ) 种操作, 包括属性值的读写, 属性的添加, 属性删除等
+2. 通过Reflect ( 反射 ):  动态对被代理对象的相应属性进行特定的操作 
+3. 文档
+   - https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy
+   - https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect
+          </code></pre>
+          <p id="C12-63"> 响应式原理
+          <pre><code class="js">
+// 目标对象
+const obj = {
+  name: "小绿",
+  age: 10,
+  wife: {
+    name: "小红",
+    age: 12
+  }
+}
+// 把目标对象变成代理对象
+// 参数1 : obj -> target 目标对象
+// 参数2 : handler -> 处理器对象, 用来监视数据, 及数据的操作
+const proxyObj = new Proxy(obj, {
+  // get(目标对象, 属性)  获取属性
+  get(target, prop) {
+    // 要通过reflect 反射对象
+    return Reflect.get(target, prop)
+  },
+  // set(目标对象, 属性, 值)  设置属性, 也可以添加新的属性
+  set(target, prop, val) {
+    return Reflect.set(target, prop, val)
+  },
+  // deleteProperty(target,prop) 删除属性
+  deleteProperty(target, prop) {
+    return Reflect.deleteProperty(target, prop)
+  }
+})
+// 通过代理对象获得目标对象的属性值
+console.log(proxyObj.name)
+// 通过代理对象设置代理对象的属性值
+proxyObj.name = '奥力给'
+console.log(obj.name);
+// 通过代理对象向目标对象添加一个新的属性
+proxyObj.gender = '男'
+console.log(obj.gender);
+// 通过代理对象删除目标对象的属性
+delete proxyObj.gender
+console.log(obj);
+// 通过代理对象操作目标对象的属性对象
+proxyObj.wife.name = '奥里给给'
+console.log(obj); </code></pre>
+          </p>
+          <h3 id="C12-8">reactive ref 细节</h3>
+          <p>ref 用来处理基本类型数据, reactive 用来处理对象(递归深度响应式)</p>
+          <p>如果用ref (对象 / 数组). 内部会自动转换为 reactive proxy 的代理对象. 通过.value 的形式来访问内部的对象 </p>
+          <p>red内部: 通过给value 属性添加getter settter 来实现数据的劫持</p>
+          <p>reactive 内部: 通过使用Proxy 来实现对象内部所有数据的劫持, 并通过Refelct 操作对向内部数据</p>
+          <p>ref 的数据操作: 在js 内部要.value , 在模板中不需要内部解析模板时自动添加.value</p>
+          <pre><code class="js">
+ &lt;template&gt;
+	&lt;div&gt;{{a1}}&lt;/div&gt;
+	&lt;div&gt;{{a2}}&lt;/div&gt;
+	&lt;div&gt;{{a3}}&lt;/div&gt;
+  &lt;button @click="updateRef"&gt;修改ref创建的对象&lt;/button&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { defineComponent, ref, reactive } from "vue";
+export default defineComponent({
+	setup() {
+		let a1 = ref("我是字符串");
+		let a2 = reactive({
+			name: "小王",
+			wife: {
+				name: "小红",
+				like: "喜欢小王",
+			},
+		});
+        // 通过ref 创建的对象, 访问内部的属性和方法 要通过.value 的形式
+        // a3 是一个Proxy 对象
+		let a3 = ref({
+			age: 18,
+            // 这里的wife 也是一个Proxy 对象
+            wife:{
+                name:"奥力给"
+            }
+		});
+    function updateRef(){
+      console.log('我改变了');
+      a3.value.age = 20
+    }
+		return {
+			a1,
+			a2,
+			a3,
+      updateRef
+		};
+	},
+});
+&lt;/script&gt;
+&lt;style&gt;
+&lt;/style&gt; </code></pre>
+          <h3 id="C12-9">计算属性和监视</h3>
+          <p id="C12-91">computed 函数
+            <em>与computed 功能一致</em>
+            <em>只有getter 是一个函数 let c1 = computed( ( ) => {} ) </em>
+            <em>有getter 和 setter 是一个对象 let c2 = computed( { get( ){ }, set( ) { } } )</em>
+          <pre><code class="js">
+&lt;script&gt;
+  import {
+    defineComponent,
+    ref,
+    reactive,
+    watch,
+    computed,
+    watchEffect,
+  } from "vue";
+  export default defineComponent({
+    setup() {
+      // watch 复习
+      let a = ref("我是一个字符串");
+      // 监视  a 的改变
+      watch(
+        a,
+        (val) =&gt; {
+          console.log("我改变的值是 " + val);
+        },
+        {
+          immediate: true,
+          deep: true,
+        }
+      );
+      function updateA() {
+        a.value = "奥力给";
+      }
+      // watchEffect   监听回调中的所有数据  会在初始化的时候执行一次
+      let b = reactive({
+        name: "雄安红",
+        age: 10,
+      });
+      // watchEffect(() =&gt; {
+      //   let c  = b.name
+      //   console.log(c);
+      // })
+      watch([() =&gt; b.name, () =&gt; b.age], (val) =&gt; {
+        console.log(typeof val); // 会默认将对象中的值抽取出来
+        console.log("watch 监听的 b  现在的值是 " + val);
+      });
+      function updateB() {
+        b.name = "喜欢吃奥力给";
+      }
+      // 计算属性
+      // 计算属性要实现 set 的值在界面上改变, 需要转换成响应式数据
+      let user = reactive({
+        firstName: "东方",
+        lastName: "不败",
+      })
+      // 一个参数是函数
+      let GetFull = computed(() =&gt; {
+        return user.firstName + "-" + user.lastName;
+      });
+      // 两个参数是对象
+      let GetGull2 = computed({
+        get() {
+          console.log('我被读取了')
+          return user.firstName + "-" + user.lastName;
+        },
+        set(val) {
+          let names = val.split("-");
+          console.log(names);
+          user.firstName = names[0];
+          user.lastName = names[1];
+        }
+      });
+      function updateUser() {
+        // computed 属性的值 通过 .value 属性
+        GetGull2.value = '诸葛-孔明'
+      }
+      return {
+        a,
+        updateA,
+        b,
+        updateB,
+        GetGull2,
+        user,
+        updateUser
+      };
+    },
+  });
+&lt;/script&gt;
+            </code></pre>
+          </p>
+          <p id="C12-92">watch 函数
+            <em>监视指定的一个或多个响应式数据</em>
+          <pre><code class="js">
+// 一个对象
+// immediate 是否初始化执行
+// deep 是否深度监视
+watch(监听对象,(值) => { },{immediate:true, deep:true})
+
+// 多个对象  使用数组
+// 如果是ref 对象, 直接执行
+// 如果是reactive 中的属性, 使用函数
+watch([() => user.firstName, () => user.lastName],() => { })</code></pre>
+          <em>默认初始化不执行回调, 在watch 的第三参数对象上设置 immediate:true</em>
+          <em>通过设置 deep : true 执行深度监视</em>
+          </p>
+          <p id="C12-93">watchEffect 函数
+            <em>不用直接指定监视的数据, 回调函数中使用的那些响应式数据就监听那些响应式数据</em>
+            <em>默认初始化时执行一次</em>
+            <em>监视数据时发生回调</em>
+          <pre><code class="js">
+watchEffect(() => {
+  // 回调函数体
+})</code></pre>
+          </p>
+          <h3 id="C12-11">生命周期函数</h3>
+          <p> 如果 3.x 中的和 2.x 中的周期函数同时执行, 3.x 会优先执行</p>
+          <pre><code class="js">
+beforeCreate -> 使用 setup()  // 创建时
+created -> 使用 setup()  // 创建时
+beforeMount -> onBeforeMount  // 渲染之前
+mounted -> onMounted  // 渲染之后
+beforeUpdate -> onBeforeUpdate  // 更新之前
+updated -> onUpdated  // 更新后
+beforeDestroy -> onBeforeUnmount// 销毁前 // 在vue3.x 中已经改名了  
+destroyed -> onUnmounted // 销毁后  // 在vue3.x 中已经改名了
+errorCaptured -> onErrorCaptured</code></pre>
+          <h3 id="C12-12">shallowReactive shallowRef </h3>
+          <p id="C12-121">shallowReactive 只处理了对象内最外层属性的响应式( 浅响应式 )
+          <pre><code class="js">
+// 特殊情况
+// 假如shallowReactive 的嵌套层次很多, 修改第一层级的值, 后面的值被修改了, 也会更新UI
+const state = shallowReactive({
+   a:"a",
+    s:{
+		b:'b',
+        s:{
+            c:"c"
+        }
+    }
+})
+function update(){
+//     state.a = '1' // 如果第一层级的值没有改变, 则修改了深层级的值UI不会的发生变化
+    state.s.b = '2'
+    state.s.s.c = '3'
+}
+// 这种情况, 即使 state 是浅监听, 但是因为修改了第一层级的, 后面的层级在UI 中还是会被修改</code></pre>
+          </p>
+          <p id="C12-122">shallowRef 只处理了value 的响应式, 不进行对象的reactive 处理
+          </p>
+          <p id="C12-123">triggerRef 主动要求UI 更新 triggerRef(ref对象) 手动指定与之关联的效果
+          <pre><code class="js">
+const state = shallowRef({
+  name:"奥力给",
+    info:{
+        name:"给力",
+        color:"不好看",
+        means:{
+      first:"加油",
+            two:'此奥里给'
+        }
+    }
+})
+// shallowRef 和 ref 一样, 是去监听.value 的变化, 
+// 如果想要和shallowReactive 一样, 修改第一层级, 深层级的一样会改变, 一种是通过重新赋值
+function updateState(){
+    // 重新赋值
+    state.value = {
+    name:"奥里给给",
+        info:{
+            name:"给力",
+            color:"不好看",
+            means:{
+                first:"我给你加油",
+                two:'此奥里给'
+            }
+        }
+    }
+    
+    // 第二种主动要求UI 更新  triggerRef(ref对象) 手动指定与之关联的效果
+     state.value.info.means.two = '我喂你吃奥力给'
+    triggerRef(state)
+} </code></pre>
+          </p>
+          <h3 id="C1-214">readonly shallowReadonly ( 内部修改, 界面不发生变化 )</h3>
+          <p id="C12-141">readonly
+          <pre><code class="js">
+- 深度只读数据
+- 获取一个对象( 响应式对象, 纯对象 ). 或ref 并返回原始代理的只读代理
+- 只读代理是深层的, 访问的任何嵌套的property 都是只读的 </code></pre>
+          </p>
+          <p id="C12-142">shallowReadonly
+          <pre><code class="js">
+- 浅只读数据
+- 创建一个代理, 使其自身的property 为只读, 但不执行嵌套对象的深度只读转换 </code></pre>
+          </p>
+          <p id="C12-143">应用场景
+          <pre><code class="js">
+在某些特定的情况下, 我们可能不希望对数据进行更新的操作, 那就可以包装成一个只读代理来读取数据, 而不能修改或删</code></pre>
+          <pre><code class="js">
+const state = reactive({
+  name:"lina",
+  handson:{
+    name:"青山"
+  }
+})
+// 深度只读
+const state2 = readonly(state)
+// 浅度只读 直接属性不可以修改, 
+const state3 = shallowReadonly(state)</code></pre>
+          </p>
+          <h3 id="C12-16">toRaw markRaw</h3>
+          <p id="C12-161">toRaw ---- *返回原始对象
+          <pre><code class="js">
+- 返回由reactive 和 readonly 方法转换成响应式代理的普通对象
+- 是一个还原方法, 用于临时读取, 访问不会被代理 / 跟踪, 写入时不会触发界面更新
+          </code></pre>
+          </p>
+          <p id="C12-162">markRaw
+          <pre><code class="js"> 标记一个对象, 使其永远不会被转换为代理, 返回对象本身</code></pre>
+          </p>
+          <p id="C12-163">toRaw ---- 应用场景
+          <pre><code class="js">- 有些值不应该被设置为响应式, 例如复杂的第三方类实例, 或 Vue 组件对象
+- 当渲染具有不可变数据源的大列表时, 跳过代理转换可以提高性能 </code></pre>
+          <pre><code class="js">
+import { defineComponent, ref, reactive, toRaw, watch, markRaw } from "vue";
+export default defineComponent({
+	setup() {
+		const state = reactive({
+			name: "青山",
+			like: "喜欢",
+		});
+		watch(
+			state,
+			(val) => {
+				// console.log(val);
+			},
+			{ immediate: true }
+		);
+		// toRaw
+		const ToRaw = toRaw(state);
+		// console.log(ToRaw); // 返回原始对象
+
+		// markRaw   返回对象本身
+		const MarkRaw = () => {
+			const hobby = ["吃饭", "睡觉"];
+			state.like = markRaw(hobby);
+      console.log(state);
+			setInterval(() => {
+				if (state.like) {
+					console.log(state.like);
+				}
+			}, 2000);
+		};
+		return {
+			state,
+			MarkRaw,
+		};
+	},
+});</code></pre>
+          </p>
+          <h3 id="C12-18">toRef </h3>
+          <p>为源响应式对象三的某个属性创建一个ref对象, 二者内部操作的是同一个数据值, 更新时二者时同步的</p>
+          <p>区别ref：使用ref 创建的响应式对象, 修改响应式对象的时候是不会修改源对象的</p>
+          <p>区别toRef: 使用toRef 创建的响应式对象, 修改响应式对象的时候是会修改源对象的, 并且通过toRef 创建的对象, 修改之后UI界面是不会发生变化</p>
+          <p>应用: 当要将某个prop 的ref 传递给复合函数时, toRef 十分有用</p>
+          <pre><code class="js">
+// 通过reactive 响应式  toRef
+const obj = {
+	name:"奥力给"
+}
+const reactiveObj = reactive(obj)
+// 修改值
+reactive.name = '奥力给'
+
+
+// 如果是通过原始对象修改的
+const obj = {
+	name:"奥力给"
+}
+const refObj = toRef(obj,'name')
+// 修改值  因为toRef 的是  obj.name  得到就是name的值, toRef 的访问规则.value
+refObj.value = 值 </code></pre>
+          <h3 id="C12-19">小总结: ref 和 toRef 的区别</h3>
+          <p>ref ---> **复制**, 修改响应式数据不会影响杠以前的数据</p>
+          <p>toRef ---> **引用**, 修改响应式数据会影响以前的值</p>
+          <p>ref --> 数据发生改变, 界面就会自动更新</p>
+          <p>toRef -- > 数据发生改变, 界面也不会自动更新</p>
+          <h3 id="C12-20">toRefs</h3>
+          <p>把一个响应式对象转换成普通对象, 该普通对象的每个property 都是一个ref</p>
+          <p>应用: 当从合成函数返回响应式对象时, toRefs 十分有用, </p>
+          <p>问题: reactive 对象 取出的所有属性值都是 非响应式的对象</p>
+          <p>解决: 利用toRefs 可以将一个响应式reactive 对象的所有原始属性转换为响应式的ref 对象</p>
+          <pre><code class="js">
+import { defineComponent, ref, reactive, toRefs } from "vue";
+export default defineComponent({
+	setup() {
+		const state = reactive({
+			name: "小红",
+			age: 21,
+		});
+        // 将state 在 toRefs 中解构
+        // 转换之后 , state 中的成员都是ref 对象, 通过 .value 的形式修改
+    const {name, age}  = toRefs(state)
+    setTimeout(() => {
+      // state.name = '小绿'
+      // state.age = 10
+      name.value = '小绿'
+      age.value = 10
+    },2000)
+		return {
+			// ...state,
+      name, 
+      age
+		};
+	},
+}); </code></pre>
+          <h3 id="C12-21">customRef</h3>
+          <p>创建一个自定义的ref,并对其依赖项跟踪 和 更新触发进行显示控制</p>
+          <p>track 需要追踪变化的数据</p>
+          <p>trigger 触发响应式,更新界面</p>
+          <p>需求: 使用出customRef 和 debouce 的实例</p>
+          <pre><code class="js">
+// input 输入的防抖函数
+function useDewbouceRef(value, delay) {
+	let timer = null;
+	// customRef 应该返回一个带有get set 的对象
+	return customRef((track, trigger = 100) => {
+		return {
+			get() {
+				track();
+				return value;
+			},
+			set(newValue) {
+				if (timer) {
+					clearTimeout(timer);
+				}
+				timer = setTimeout(() => {
+					value = newValue;
+					trigger();
+				}, delay);
+			},
+		};
+	});
+}
+export default defineComponent({
+	setup(){
+	// 使用自定义的函数, 第一个参数是值, 第二个参数是延迟时间
+		let input = useDebouceRe('add',200)
+		return {
+		input
+		}
+	}
+}) </code></pre>
+          <h3 id="C12-22">provide inject ( 跨组件通信 )</h3>
+          <p>provide 和 inject 提供依赖注入, 功能类似vue2.x 中的provide, inject</p>
+          <p>实现跨层级组件( 祖孙 ) 间的通信</p>
+          <p>只能在**setup**期间才能够使用</p>
+          <pre><code class="js">
+// 在父级组件中 
+setup(){
+	let color = ref('red')
+	// provide(标识符,变量名)
+	provide('color',color)
+	return {
+	color
+    }
+}
+// 在孙级组件中  跨域了子级组件
+setup(){
+	let color = inject('color')
+    return {
+	color
+    }
+}</code></pre>
+          <h3 id="C12-23"></h3>
+          <p>isRef : 判断一个值是否是 ref 对象</p>
+          <p>isReactive : 检查一个对象是否由 reactive 创建的响应式代理</p>
+          <p>isReadonly : 检查一个对象是否由readonly 创建的只读代理</p>
+          <p>isProxy : 检查一个对象是否由reactive 和 readnnly 创建的代理</p>
+          <pre><code class="js">
+setup(){
+  let a = ref('a')
+  console.log(isRef(a))  // true
+  console.log(isReactive(a)) // false
+  console.log(isReadonly(a))  // false
+  console.log(isProxy(a))  // false
+}</code></pre>
+        </div>
+      </div>
+      <!-- #C12 -->
+      <div class="C">
+        <h1 id="C12"></h1>
+        <div class="explain">
+          <p id="C121">DOM 的 diffing 算法
+            <em> diffing 算法
+              <i>最小粒度是标签</i>
+              <i>会逐级比较</i>
+            </em>
+          </p>
+          <p id="C122">
+            key的作用
+            <em>虚拟DOM 中的key 的作用</em>
+          <pre><code class="js">
+虚拟DOM 中的key 的作用
+- key 是虚拟DOM对象 的标识符, 在更新显示时key起到极其重要的作用
+- 当状态中的数据发生变化时, react 会根据 **新数据**, 生成**新的虚拟DOM**, 随后React 进行**新虚拟DOM** 与 **旧虚拟DOM**的diff 比较, 
+  1. 旧虚拟DOM中找到了与新虚拟DOM中相同的key
+     - 如果虚拟DOM中的内容没有变化, 直接使用之前的真实DOM
+     - 如果虚拟DOM中内容变了, 则生成新的真是DOM, 随后替换掉页面中之前的真实DOM
+  2. 旧虚拟DOM中没有找到与新虚拟DOM相同的key
+     - 根据数据生成新的虚拟DOM, 随后渲染到页面</code></pre>
+          <em>
+            用index对key 可能会造成的影响
+            <pre><code class="js">
+- 如果对数据集进行逆序添加, 删除等破坏初始顺序的操作
+  - 会产生没有必要的真是DOM更新 ====> 效率低
+- 如果结构中包含输入类的DOM
+  - 会产生错误DOM更新  ===> 界面出现问题
+- 如果不存在对数据的逆序添加, 删除等破坏初始顺序的操作, 仅仅用于渲染列表展示, 使用index  作为key 是没有问题的</code></pre>
+          </em>
+          <em>开发中如何选择key
+            <pre><code class="js">
+- 最好使用每条数据唯一的标识作为key, id, 手机号码, 身份证号
+- 如果确定只是简单的展示数据, 用index可以
+- 如果是顺序添加数组元素, 用index可以
+            </code></pre>
+          </em>
+          </p>
+
+        </div>
+      </div>
+      <div class="C">
+        <!-- #C13 -->
+        <h1 id="C13"></h1>
+        <div class="explain">
+          <p id="C131"> 错误
+            <em>如果npx create-react-app 报错, 将镜像换成国外的</em>
+          <pre><code class="js">
+npm config set registry https://registry.npmjs.org/
+            </code></pre>
+          <em>如果不行, 将python换成2.7.x的版本</em>
+          <em>删除yarn, yarn也会导致失败</em>
+          <em>再不行, 上网搜</em>
+          </p>
+          <p id="C132">react脚手架
+          <pre><code class="js">
+ - xxx脚手架, 用来帮助程序员快速创建一个基于xxx库的模板项目
+      - 包含了所有需要的配置, 语法检查, jsx编译, devServer
+      - 下载好入口所有的依赖
+      - 可以直接运行一个简单的效果
+   - react 提供了一个用于创建react 项目的脚手架库, create-react-app
+   - 项目的整体技术架构为：webpack + react + es6 + eslint
+   - 使用脚手架开发项目的特点是: 模块化, 组件化, 工程化
+ 创建项目并启动
+    安装:　  官网已经不建议使用create-react-app
+        npm i -g create-react-app // 可以不安装
+        npx create-react-app ProjectName
+    切换到创建的项目
+        create-react-app hello-react
+    进入到项目文件夹
+        cd hello-react
+    启动项目
+        npm/yarn start  </code></pre>
+          </p>
+          <p id="#c133"> 脚手架配置代理
+            <em>在src下面新建setupProxy.js 文件</em>
+            <em>发送请求的地址必须是当前脚本运行的地址和端口</em>
+          <pre><code class="js">
+const proxy = require('http-proxy-middleware')
+module.exports = function (app) {
+  app.use(
+    proxy('/api1', {  // 遇见/api1 前缀的请求就会触发代理
+      target: 'http://172.20.10.3:8080',
+      changeOrigin: true, // 控制服务器收到的响应头中Host字段的值,标识请求从哪里发出
+      pathRewrite: { "^/api1": "" }  // 重写请求路径, 因为api1本身不存在, 只是未来标识代理请求, 替换为一个空字符串
+      // http://172.20.10.3:3000/api1/book
+      // http://172.20.10.3:8080/book
+    })
+  )
+} </code></pre>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="./js/common/request.js"></script>
+  <script src="./js/common/flexible.js"></script>
+  <!-- 当前文件js -->
+  <script src="./js/vue/index.js"></script>
+  <!-- 引入高亮js -->
+  <script src="./highlight/highlight.min.js"></script>
+  <script src="./highlight/languages/javascript.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</body>
+
+
+</html>

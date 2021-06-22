@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>首页</title>
+  <link rel="stylesheet" href="./css/common/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/common/normalize.css">
+  <link rel="stylesheet" href="./css/common/media.min.css">
+  <link rel="stylesheet" href="./css/common/NavBar.min.css">
+  <link rel="stylesheet" href="./css/home/loading.css">
+  <link rel="stylesheet" href="./css/home/home.min.css">
+  <link rel="stylesheet" href="./css/detail/style.css">
+</head>
+
+<body>
+  <!-- 等待动画开始 -->
+  <div class="loading">
+    <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <line class="mark" x1="0" y1="0" x2="0" y2="0" fill="none" stroke="#5BB4D8" stroke-miterlimit="10"
+          stroke-linecap="none" stroke-width="12" />
+      </defs>
+      <g class="container1" />
+      <g class="container2" />
+    </svg>
+  </div>
+  <!-- 等待动画结束 -->
+  <!-- 头部颜色 -->
+  <div class="container-fluid">
+    <div class="adver"></div>
+  </div>
+  <div class="container">
+    <!-- 导航栏开始 -->
+    <div class="row">
+      <div class="NavBar special">
+        <div class="Nav_Left">
+          <p class="qs">QS</p>
+        </div>
+        <div class="Nav_Right">
+          <ul>
+            <li class="search">
+              <input type="text" placeholder="Search">
+            </li>
+            <li class="learn">
+              学习笔记 </li>
+            <li class="Node"><a href="./node.html">Node</a></li>
+            <li class="Vue"><a href="./vue.html">Vue</a></li>
+            <li class="React"><a href="./react.html">React</a></li>
+          </ul>
+        </div>
+        <div class="Nav_Center">
+          <input type="text" placeholder="Search">
+        </div>
+        <div class="Nav_End">
+          <img src="./img/more.png" alt="">
+        </div>
+      </div>
+    </div>
+    <!-- 导航栏结束 -->
+    <!-- 展示内容 开始 -->
+    <div class="row">
+      <div class="Tip">
+        <h1 class="none"><span>暂无查找</span></h1>
+        <h1 class="data-loading"><span>Loading.....</span></h1>
+      </div>
+      <div class="dataShow">
+
+      </div>
+    </div>
+    <!-- 展示内容 结束 -->
+    <!-- 侧边栏开始 -->
+    <div class="slideBar">
+      <div class="title">
+        <p>学习笔记</p>
+      </div>
+      <div class="diary_list">
+        <a target="_blank" href="./vue.html">Vue</a>
+        <a target="_blank" href="./node.html">Node</a>
+        <a target="_blank" href="./react.html">React</a>
+      </div>
+    </div>
+    <!-- 侧边栏结束 -->
+  </div>
+</body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="./js/common/request.js"></script>
+<script src="./js/common/flexible.js"></script>
+<script src="./js/home/TweenMax.min.js"></script>
+<script src='./js/home/loadingIndex.js'></script>
+<script src="./js/detail/index.js"></script>
+
+</html>

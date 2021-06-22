@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>Node</title>
+  <!-- 响应式库 -->
+  <link rel="stylesheet" href="./css/common/bootstrap.min.css">
+  <!-- NavBar样式 -->
+  <link rel="stylesheet" href="./css/common/NavBar.min.css">
+  <!-- 公共文本媒体查询文件 -->
+  <link rel="stylesheet" href="./css/common/media.min.css">
+  <!-- 初始化样式 -->
+  <link rel="stylesheet" href="./css/common/normalize.css">
+  <!-- 当前文件媒体查询文件 -->
+  <link rel="stylesheet" href="./css/node/node-media.css">
+  <!-- 当前文件style -->
+  <link rel="stylesheet" href="./css/node/style.min.css">
+  <!-- 引入高亮库 -->
+  <link rel="stylesheet" href="./highlight/styles/base16/eighties.min.css">
+
+<body>
+  <div class="container-fluid">
+    <!-- goTop 开始 -->
+    <div class="goTop"><img src="./img/goTop.png" alt=""></div>
+    <!-- goTop 结束 -->
+    <!-- 导航栏开始 -->
+    <div class="row">
+      <div class="NavBar">
+        <div class="Nav_Left">
+          <p class="qs">QS</p>
+        </div>
+        <div class="Nav_Right">
+          <ul>
+            <li class="search">
+              <input type="text" placeholder="Search">
+            </li>
+            <li class="learn">
+              学习笔记 </li>
+            <li class="Node"><a href="./node.html">Node</a></li>
+            <li class="Vue"><a href="./vue.html">Vue</a></li>
+            <li class="React"><a href="./react.html">React</a></li>
+          </ul>
+        </div>
+        <div class="Nav_Center">
+          <input type="text" placeholder="Search">
+        </div>
+        <div class="Nav_End">
+          <img src="./img/more.png" alt="">
+        </div>
+      </div>
+    </div>
+    <!-- 导航栏结束 -->
+
+    <!-- 侧边栏开始  -->
+    <div class="sliderBar">
+      <div class="title">
+        <h3>Node 笔记</h3>
+      </div>
+      <div class="feedback">
+        <a href="./feedback.html" target="_black">反馈</a>
+      </div>
+    </div>
+    <!-- 侧边栏结束  -->
+    <div class="content">
+      <div class="title">学习笔记</div>
+      <!-- #C1 -->
+      <div class="C">
+        <h1 id="C1">解决爬虫乱码</h1>
+        <div class="explain">
+          <p>在爬取gb2312 的字体的网页时, 获得数据是乱码的</p>
+          <p>在请求的使用为axios 添加配置 <span>
+              responseType:'arraybuffer'</span>
+          </p>
+          <p>使用 <span>iconv-lite</span> 解码</p>
+          <pre><code class="js">
+const iconv = require('iconv-lite')
+const axios = require("axios")
+axios.get('地址',{
+responseType:'arraybuffer'
+}).then(res => {
+  let data = res.data
+  data = iconv.decode(data, 'gb2312')
+})</code></pre>
+        </div>
+      </div>
+      <!-- #C2 -->
+      <div class="C">
+        <h1 id="C2">Proxy解决跨域</h1>
+        <div class="explain">
+          <p> <span>Vue</span> 在进行数据请求的时候, 如果后端没有进行对请求的设置 , 会出现跨域的错误</p>
+          <p>除了需要后端做请求的设置之外, 还可以前端利用Proxy 做请求代理
+          </p>
+          <pre><code class="js">
+// 在vue.config.js 
+module.exports = {
+  devServer:{
+  proxy:{
+        // 在访问某一个地转到某个地址
+    '/地址':{
+              target:"http:a.com"
+          }    
+      }
+    }
+}
+// 利用proxy, 从而解决前</code></pre>
+        </div>
+      </div>
+      <!-- #C3 -->
+      <div class="C">
+        <h1 id="C3">后端解决跨域</h1>
+        <h2 id="C31"></h2>
+        <div class="explain">
+          <p>
+            <span>Node</span> 在服务器端设置
+          </p>
+          <p>每一个页面的请求都需要修改 </p>
+          <p>建议将 跨域 的解决放在中间件中</p>
+          <pre><code class="js">
+            book.use((req, res, next) => {
+//解决跨域1
+ // res.header("Access-Control-Allow-Origin", "*")
+ //解决跨域2
+ // 允许所有请求    
+ res.append("Access-Control-Allow-Origin", "*")
+   // 允许所有的请求类型
+ res.append("Access-Control-Allow-Content-Type", "*")
+ res.json(result)
+ 其他操作
+next()
+})
+          </code></pre>
+        </div>
+      </div>
+      <!-- #C4 -->
+      <div class="C C4">
+        <h1 id="C4">Node简介</h1>
+        <h3 id="C41">Node是什么</h3>
+        <h4>Node.js is a JavaScript runtime built on Chrome 's V8 Javascript engine </h4>
+        <div class="explain">
+          <p><span>Node </span>不是一门语言
+          </p>
+          <p><span>Node </span>
+            不是库 不是框架
+          </p>
+          <p><span>Node </span>是一个JavaScript 运行时环境</p>
+          <p>
+            <span>Node </span>可以解析和执行JavaScript 代码, 可以是JavaScript代码脱离于浏览器的限制
+          </p>
+          <p> <span>Node</span> 基于谷歌的V8 引擎开发
+            <em>代码只是具有特殊格式的字符, 通过引擎去解析和执行</em>
+            <em>Chrome 的 V8 引擎是目前公认 的解析执行JavaScript代码最快的</em>
+          </p>
+        </div>
+        <h4>Node.js uses an event-driven, non-blocking I/O mode that makes it, lightweight and effcient </h4>
+        <div class="explain">
+          <p><span>event-dricven</span> 事件驱动</p>
+          <p><span>non-blocking I/O model</span> 非阻塞模型(异步)</p>
+          <p><span>lightweight and effcient</span> 轻量 和 高效</p>
+        </div>
+        <h4>Node.js package ecosyystem, npm is the largest ecosystem of open source libraries in the world</h4>
+        <div class="explain">
+          <p><span>npm</span> 是基于Node 开发的node package manager </p>
+          <p>
+            <span>npm</span>
+            是世界上最大的开源库生态系统
+          </p>
+        </div>
+        <h3 id="C42">Node 能做什么</h3>
+        <div class="explain">
+          <p>服务器后台</p>
+          <p>命令行工具
+            <em>npm ( Node )</em>
+            <em>git ( C )</em>
+            <em>hexo (Node )</em>
+          </p>
+        </div>
+      </div>
+      <!-- #C5 -->
+      <div class="C">
+        <h1 id="C5">OS Module</h1>
+        <div class="explain">
+          <p id="C51">os.EOL 是一个常量, 返回当前操作系统的换行符
+          </p>
+          <pre><code class="js">
+            Windows 是 \r\n  其他系统是\n
+const fs = require('fs')
+const os = require('os')
+function ReadFile1(){
+  return new Promise((resolve, reject) => {
+    fs.readFile('./data.txt',(err, data) => {
+      if(err) reject(err)
+      // 在将数据把行作为单位的时候, 根据操作系统的差异, 对于行的单位是不同的
+      // 在这里不能使用\r\n 
+      data.toString().split('\r\n').forEach(line => {
+        console.log(line)
+      })
+    })
+  })
+}
+function ReadFile2(){
+  return new Promise((resolve, reject) => {
+    fs.readFile('./data.txt',(err, data) => {
+       // 使用os.EOL 能够获取当前系统的换行符
+      data.toString().split(os.EOL).forEach(line => {
+        console.log(line)
+      })
+    })
+  })
+}
+async function fn(){
+  // await ReadFile1()
+  await ReadFile2()
+}
+fn()</code></pre>
+        </div>
+        <div class="explain">
+          <p id="C52"><span>os.arch( )</span> 返回当前计算机的架构</p>
+          <pre><code class="js">console.log(os.arch())  // x64</code></pre>
+        </div>
+        <div class="explain">
+          <p id="C53"><span>os.tmpdir </span> 回操作系统默认的临时文件目录</p>
+          <pre><code class="js">console.log(os.tmpdir)</code></pre>
+        </div>
+        <div class="explain">
+          <p id="C54"><span>os.totalmem ( )</span> 获取内存信息 以整数的形式返回系统的内存总量（以字节为单位）</p>
+          <pre><code class="js">console.log(os.totalmem())</code></pre>
+        </div>
+        <div class="explain">
+          <p id="C55"><span>os.freemem( )</span> 获取空闲内存</p>
+          <pre><code class="js">console.log(os.freemem())</code></pre>
+        </div>
+      </div>
+      <!-- #C6 -->
+      <div class="C">
+        <h1 id="C6"> Path</h1>
+        <div class="explain">
+          <p>
+            <span>__dirname
+            </span>获得当前执行文件所在目录的完整目录名
+          </p>
+          <p><span>__filename</span> 获得当前执行文件的带有完整绝对路径的路径名
+          </p>
+          <p>
+            <span>process.cwd() </span>获得当前执行 node 命令的文件夹目录名
+          </p>
+          <pre><code class="js">
+let path = require('path')
+console.log(__dirname)
+console.log(__filename)
+console.log(process.cwd())
+          </code></pre>
+        </div>
+        <div class="explain">
+          <p id="C61"><span>extname</span>
+            获取路径信息的扩展名
+          </p>
+          <pre><code class="js">let extend = path.extname(strPath)
+console.**log**(extend)</code></pre>
+        </div>
+        <div class="explain">
+          <p id="C62"><span>join</span>
+            连接路径, 能够正确使用当前系统的路径分隔符
+          </p>
+          <p>Unix / Windows \</p>
+          <pre><code class="js">let dirPath = path.join('d:/js','my')
+console.log(dirPath)</code></pre>
+        </div>
+        <div class="explain">
+          <p id="C63"><span>resolve </span>
+            将相对路径转换为绝对路径
+          </p>
+          <p>接受多个参数</p>
+          <pre><code class="js">
+let posPath = path.resolve('/web/','heima/js/','1-基础','.//html/index.html')
+console.log(posPath)  //  	D:\web\heima\js\1-基础\html\index.html
+// 每一个 / 都会改变结果 
+let posPath = path.resolve('/web/','heima/js/','1-基础','/html/index.html')
+console.log(posPath)  //  	D:\html\index.html
+          </code></pre>
+        </div>
+        <div class="explain">
+          <p id="C64"><span>accessSync() </span>
+            同步读取一个路径, 判断一个目录是否存在
+          </p>
+          <pre><code class="js">
+function exists(path){
+  try{
+    fs.accessSync(path);
+    return true
+  }catch{
+    return false
+  }
+}
+if(exists('D:/\DOwnload(2)')){  // right
+  console.log('right')
+}else{
+  console.log('false')  
+}
+          </code></pre>
+        </div>
+        <div class="explain">
+          <p id="C65"><span>path.isAbsolute() </span>检测是否为绝对路径
+          </p>
+          <pre><code class="js">
+console.log(path.isAbsolute('../1-path'))  // false
+console.log(path.isAbsolute('d://DOload(2)'))  // true
+          </code></pre>
+        </div>
+        <div class="explain">
+          <p id="C66"><span>path.parse( ) </span>将路径解析
+          </p>
+          <pre><code class="js">
+let info = path.parse(__filename)
+console.log(info)
+{
+  root: 'D:\\',   // 根路径
+  dir: 'D:\\桌面\\黑马前端\\NodeJs\\8-核心模块\\1-path',  // 文件所在路径
+  base: 'index.js',  // 执行脚本的文件名
+  ext: '.js',  // 执行脚本的扩展名
+  name: 'index'  // 执行脚本的文件名
+}
+          </code></pre>
+        </div>
+      </div>
+      <!-- #C7 -->
+      <div class="C">
+        <h1 id="C7 C71">Url</h1>
+        <div class="explain">
+          <pre><code class="js">
+const url = require('url')
+// 使用 WHATWG 的 API 解析 URL 字符串
+const myURL = new URL('https://user:pass@sub.host.com:8080/p/a/t/h?query=string#hash');
+// 使用传统的 API 解析 URL 字符串：
+const url = require('url');
+const myURL = url.parse('https://user:pass@sub.host.com:8080/p/a/t/h?query=string#hash');
+          </code></pre>
+        </div>
+        <div class="explain">
+          <p id="C72">
+            <span>url.parse( )</span> 使用和解析URL地址
+            <em>传统的API 接口 ( 已经弃用 改为 WHATWG URL API )</em>
+          </p>
+          <pre><code class="js">
+let httpUrl = 'https地址'
+console.log(url.parse(httpUrl))
+Url {
+  protocol: 'https:',  // 协议
+  slashes: true,  // 斜杠语法
+  auth: null, 
+  host: 'www.bilibili.com',  // 主机地址
+  port: null,  // 端口
+  hostname: 'www.bilibili.com',  // 主机名
+  hash: null,
+  search: '?p=9&spm_id_from=pageDriver',  //  URL 的序列化查询部分。
+  query: 'p=9&spm_id_from=pageDriver', // 参数
+  pathname: '/video/BV1i7411G7kW',  // 路径名
+  path: '/video/BV1i7411G7kW?p=9&spm_id_from=pageDriver',  // 
+  href: 'https://www.bilibili.com/video/BV1i7411G7kW?p=9&spm_id_from=pageDriver'
+}
+          </code></pre>
+        </div>
+        <div class="explain">
+          <p id="C73"> <span>resolve</span> 解析相对基URL的目标URL 第一个参数: 基URL 第二个参数: 目标URL</p>
+          <pre><code class="js">
+let strUrl = url.resolve('https://www.bilibili.com','/about')
+console.log(strUrl)  // https://www.bilibili.com/about
+
+// 如果第二个参数前面的 /  省略, 则取代基URL 的最后一个子地址
+let strUrl = url.resolve('https://www.bilibili.com/home/detail','about')
+console.log(strUrl)  // 'https://www.bilibili.com/home/about
+          </code></pre>
+        </div>
+      </div>
+      <!-- #C8 -->
+      <div class="C">
+        <h1 id="C8">Request</h1>
+        <div class="explain">
+          <p id="C81">
+            请求配置
+          </p>
+          <p>
+          </p>
+          <pre><code class="js">
+const http = require('http')  // 引入模块
+let req = http.request(options, fn(res){
+                       // 数据操作
+})  // 数据请求
+  let options = {
+  host:'',  // 主机名
+  port:'',// 端口
+  headers:'',  // 请求头 
+  method:""  //方法
+}
+req.end()
+
+          </code></pre>
+        </div>
+        <div class="explain">
+          <p id="C82">案例- 爬取电影</p>
+          <pre><code class="js">
+// 爬取首页数据
+// 将文件请求下来之后, 通过文件写入txt中, 转码写入json  
+// 删除txt文件 
+const fs = require('fs')
+const iconv = require('iconv-lite');
+const request = require('request');
+const url = require('url')
+iconv.skipDecodeWarning = true;
+let BaseUrl = 'https://dianying.2345.com/'
+request({
+  url: BaseUrl, //请求路径
+  method: "get", //请求方式，默认为get
+  headers: { //设置请求头
+    "content-type": "application/json",
+  }
+}, function (error, response, body) {
+  if (!error && response.statusCode == 200) {
+    huoqu()
+  }
+}).pipe(fs.createWriteStream('index.txt'))
+
+function RF() {
+  return new Promise((resolve, reject) => {
+    // 得到文件数据
+    fs.readFile('./index.txt', (err, data) => {
+      if (!err) {
+        // 将数据解码转字符串
+        let newData = iconv.decode(data, 'gb2312').toString()
+        // 正则过滤
+        let reg1 = /&lt;a (.*?) (.*?)" href\="(?&lt;movieUrl&gt;.*?)" title\="(.*?)" (.*?) &gt;(?&lt;movieName&gt;.*?)&lt;\/a&gt;/ig
+
+        // 解析字符串
+        parseUrl(newData, reg1).then(() => {
+          // 调用resolve  函数结束
+          resolve('')
+        })
+      }
+    })
+  })
+}
+// 解析字符串 并将数据存入文件
+function parseUrl(newData, reg1) {
+  return new Promise((resolve, reject) => {
+    let xl;
+    let str = '"data":['
+    let n = 0;
+    while (xl = reg1.exec(newData)) {
+      // 解析Url 地址
+      // 查找是否包含https 
+      let httpUrl = xl.groups.movieUrl;
+      let reg = /^https:/ig
+      if (!reg.test(httpUrl)) {
+        httpUrl = 'https:' + httpUrl
+      }
+      // 最终的字符串 
+      if(n != 0){
+        str += ',\n' 
+      }
+      n++;
+      str +=`[{"name":"${xl.groups.movieName}","url":"${httpUrl}"}]`
+     
+    }
+    WF(str)
+    resolve()
+  })
+}
+// 删除文件 函数
+function deleteFile() {
+  return new Promise((resolve, reject) => {
+    fs.unlink('./index.txt', () => {
+      resolve()
+    })
+  })
+}
+// 写入文件
+function WF(final){
+  fs.writeFile('./list.json', "{" +final+ "]}", {
+    flag: 'a'
+  }, () => {})
+}
+async function huoqu() {
+  // 读取数据
+  await RF()
+  // 删除index.txt文件
+  await deleteFile()
+}</code></pre>
+          <pre><code class="js">
+// requestList.js 请求各个类别的数据
+const url = require('url')
+const fs = require('fs')
+const iconv = require('iconv-lite')
+const readline = require('readline')
+const {
+  isNumber
+} = require('util')
+const {
+  parse
+} = require('path')
+const request = require('request')
+// 引入爬取的首页文件  list.json
+function RF(file) {
+  return new Promise((resolve, reject) => {
+    fs.readFile(file, (err, data) => {
+      if (err) reject(err)
+      resolve(data)
+    })
+  })
+}
+// 获得文件中的名字 和 地址
+function NameUrl(res) {
+  return new Promise((resolve, reject) => {
+    let movielist = []
+    let NameReg = /"name": "(?&lt;name&gt;.*?)"/ig
+    let UrlReg = /"url": "(?&lt;url&gt;.*?)"/ig
+    let name = '';
+    let url = ''
+    while ((name = NameReg.exec(res)) && (url = UrlReg.exec(res))) {
+      movielist.push([name.groups.name, url.groups.url])
+    }
+    resolve(movielist)
+  })
+}
+// 解析 分类
+function Readfn(list) {
+  return new Promise((resolve, reject) => {
+    let rl = readline.createInterface({
+      input: process.stdin,
+      output: process.stdout
+    })
+    let movie = []
+    for (let a = 0; a < list.length; a++) {
+      // 如果分类中包含了数字 就退出
+      if (!Object.is(parseInt(list[a][0]), NaN)) {
+        break;
+      }
+      movie.push(list[a][0])
+    }
+    rl.question("选择要查找的内容\n" + movie.join('   ') + '\n', function (answer) {
+      resolve(answer)
+      // 关闭
+      rl.close()
+    })
+  })
+}
+// 查询 电影分类
+function queryMovie(query, movieList) {
+  return new Promise((resolve, reject) => {
+    let index = ''
+    let res = movieList.some(s => {
+      // 如果有需要查询的数据  就将该查询的地址保存下来
+      return s[0] == query ? index = s[1] : ''
+    })
+    if (res) {
+      request({
+        url: index,
+        method: 'GET',
+        headers: { //设置请求头
+          "content-type": "application/json",
+        }
+      }, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          resolve()
+        }
+
+      }).pipe(fs.createWriteStream('res.txt'))
+    } else {
+      resolve('无查询结果')
+    }
+  })
+}
+// 解析 res.txt 文件的编码
+function finalData(fileName) {
+  return new Promise((resolve, reject) => {
+    fs.readFile(fileName, (err, data) => {
+      if (!err) {
+        // 使用icon-lite 重写文件的编码 并覆盖之前的
+        data = iconv.decode(data, 'gb2312')
+        fs.writeFile('res.txt', data, () => {
+          // 分类数据解析
+          fs.readFile('res.txt', (err, data) => {
+            if (!err) {
+              // 获得文件数据
+              let parseData = data.toString()
+
+              // 删除文件
+              fs.unlink('res.txt', () => {
+
+              })
+              resolve(parseData)
+            }
+          })
+        })
+      } else {
+        throw err;
+      }
+    })
+  })
+}
+
+// 爬取当前分类的电影信息
+function RFRes(res) {
+  return new Promise((resolve, reject) => {
+    let picUrl = /&lt;li media="(.*?)" &gt;(.*?)&lt;div class="pic"&gt;(.*?)&lt;img (.*?) data-src="(?&lt;imgUrl&gt;.*?)" (.*?)&gt;(.*?)&lt;\/div&gt;(.*?)&lt;\/li&gt;/igs
+    let commentScore = /&lt;li media="(.*?)" &gt;(.*?)&lt;div class="pic"&gt;(.*?)&lt;em&gt;(?&lt;cScore&gt;.*?)&lt;\/em&gt;(.*?)&lt;t;\/div&gt;(.*?)&lt;\/li&gt;/igs
+    let movieUrl = /&lt;li media="(.*?)" &gt;(.*?)&lt;div class="pic"&gt;(.*?)&lt;a class="aPlayBtn" href="(?&gl;movieUrl&gt;.*?)" target="_blank" title="(?&lt;movieName&gt;.*?)" (.*?)&gt;(.*?)&lt;\/a&gt;(.*?)&lt;\/div&gt;(.*?)&lt;\/li&gt;/igs
+    let data = []
+    let imgurl = ''
+    let score = ''
+    let movie = ''
+    while ((imgurl = (picUrl.exec(res))) && (score = commentScore.exec(res)) && (movie = movieUrl.exec(res))) {
+      // 对 imgUrl 设置 
+      let reg = /^https/i
+      if(!reg.test(imgurl.groups.imgUrl)){
+        imgurl.groups.imgUrl = "https:" + imgurl.groups.imgUrl
+      }
+      data.push({
+        "imgurl": imgurl.groups.imgUrl,
+        "score": score.groups.cScore,
+        "movieUrl": movie.groups.movieUrl,
+        "movieName": movie.groups.movieName
+      })
+    }
+    resolve(data)
+  })
+}
+async function main() {
+  // 首页数据
+  let data = await RF('list.json')
+  data = data.toString()
+  // 分类数据
+  let movieList = await NameUrl(data)
+  // 需要查询的数据
+  // let answer = await Readfn(movieList)
+  // 分类查询的结果  生成 res.txt  解码前
+  let result = await queryMovie('日本', movieList)
+  // 提取res.txt 文件的数据  解码后
+  let decodedData = await finalData('res.txt')
+  // 提取 res.txt 分类查询的数据
+  let classify = await RFRes(decodedData)
+  fs.writeFile('res.json',"{\"data\":" + JSON.stringify(classify) + '}',(err) => {
+    console.log('sucess')
+  })
+}
+main()
+          </code></pre>
+        </div>
+      </div>
+      <!-- #C9 -->
+      <div class="C">
+        <h1 id="C9">cherrio</h1>
+        <div class="explain">
+          <p id="C91"> 安装
+          </p>
+          <pre><code class="js">npm install cheerio -D</code></pre>
+        </div>
+        <div class="explain">
+          <p id="C92"> 简介
+          </p>
+          <pre><code class="js">
+- Cheerio 不是 网络浏览器,   cheerio 解析标记并提供 遍历 / 操作结果数据结构的API ,  不会像web浏览器那样解析结果. 简单的说就是不会产生视觉效果, 也不会应用css, 加载外部资源 或 执行JavaScript , 这使得Cheerio 比其他解决方案快得多
+- 特性
+  1. 熟悉的语法
+     - Cheerio 实现了核心 Jquery 的子集, cheerio 从jQuery 库中消除了所有DOM 不一致和浏览器残骸
+  2. 快速发展
+     - Cheerio 使用非常简单, 一致的DOM 模型工作, 结果, 解析, 操作 和 渲染都非常高效
+  3. flexible 灵活
+     - Cheerio 封装了 parse5 解析器, 可以解析几乎任何HTML 文档 和 XML 文档
+          </code></pre>
+        </div>
+        <div class="explain">
+          <p id="C93"> 使用
+          </p>
+          <pre><code class="js">let cheerio = require('cheerio')</code></pre>
+          <h6>解析HTML ( Load )</h6>
+          <pre><code class="js">
+html = await axios.get('url')
+let $ = cheerio.load('html')  // 可以是文件, 也可以是HTML 内容的格式
+          </code></pre>
+
+          <h6>解析选项</h6>
+          <pre><code class="js">
+let $ = cheerio.load("&lt;ul&gt;&lt;li&gt; I am string&lt;/li&gt;&lt;/ul&gt;",{
+  ignoreWhitespace:true,  // 忽略空白字符
+  xmlMode:false,  //  默认false(特殊标签内的内容仅仅是文本) 指示特殊标签是否可以得到特殊对待(script ) &lt;br&gt; 是否可以有子级   
+  normalizeWhitespace:false,  // 默认false  用单个字符替换所所有的空格
+  decodeEntities:true,  // true 文档中的实体将会被解码
+  lowerCaseTags:true, // 所有标签都小写, 如果xmlMode 禁用, 则默认为true 
+  lowerCaseAttributeNames:false, //  true -> 所有的属性名称为小写  默认为false
+  recognizeCDATA: true // 如果设置为true 即使xmlMode 未启用选项, CDATA 也会被识别为文本
+  }) </code></pre>
+
+          <h6>选择器 -- cheerio 的选择器几乎和jQuery 一模一样, 语法上十分相似</h6>
+          <pre><code class="js">
+$(selector[, context,[root]])
+// 选择器是文档遍历的 和 操作的起点, cheerio 实现了大部分的方法
+$('.love').text()
+$('.love').html()
+$('.love').attr('class')
+          </code></pre>
+
+          <h6>属性操作</h6>
+          <pre><code class="js">
+.attr(name, value) 
+//这个方法用来设置和获取属性, 获取第一个符合匹配的元素的属性值, 如果属性值被设置为null
+// 那么该属性会被移出 
+
+// 也可以把function map 作为参数传递进去
+$('.love').attr('name', function(i , Value){
+    return value + 'newValue'  // 把当前的值加上一个新值返回出去
+})
+
+// removeAttr(name)  移出名为name 的属性
+$('.love').removeAttr('class')
+
+// hasClass(className)  检测元素是否含有此类名
+$('.love').hasClass('body')   // false | true
+
+//addClass(className)  添加类名到选中的元素  可以用函数作为参数
+$('.love').addClass('red')
+
+// remoteClass(  className  )    移出一个或多个类名 , 用空格分隔, 如果为空, 则所有的类名都将被删除, 可以传入函数作为参数
+$('.love').remeteClass('a b c')
+          </code></pre>
+
+          <h6>方法遍历</h6>
+          <pre><code class="js">
+// find( selector ) 在当前元素中选择符合规则的元素集合
+  $('.love').find('.you').length  // 测试长度
+  ```
+// parent( )  获取元素集合的第一个父元素
+  $('.love').parent()  
+
+// next( )  选择当前元素的下一个兄弟元素
+  $('.love').next()  
+
+// prev( ) 上一个兄弟元素
+  $('.love').prev()
+
+// siblings( 参数 )
+  $('.love').siblings('p') // 选出除本身之外所有同级p元素
+  // 不带参数  返回除自身之外的所有同级元素
+
+// .children(  )
+  $('.love').children()  // 所有子级元素
+          </code></pre>
+
+          <h6>函数遍历</h6>
+          <pre><code class="js">
+// each( function(index , element) {   })  // 返回false 终止
+  $('.love').each((index, element) => {  })  // index   索引值     element 元素
+
+// map(  f unction(index, element ){   } )   // 遍历完终止
+  $('.love').map((index, elemen) => {   })  index 索引值  element 元素
+
+// filter( selector )
+  $('.love').filter('.you')
+
+// filter( function(index) {   })
+  $('.love').filter((index, element ) => {   })  index 索引值  element 元素
+
+// first(  )   last(  )    eq(index)
+  $('.love').first()  // 第一个 .love
+  $('.love').last()  // 最后一个.love
+  $('.love').eq(index)  // 索引值未 index 的.love 
+          </code></pre>
+        </div>
+        <div class="explain">
+          <p id="C94"> 案例-爬取表情包
+          </p>
+          <pre><code class="js">
+            const cheerio = require('cheerio')
+const fs = require('fs')
+const url = require('url')
+const axios = require('axios')
+const path = require('path')
+// 获取HTML 文档的内容
+let httpUrl = 'https://www.fabiaoqing.com/bqb/detail/id/54388.html'
+axios.get(httpUrl).then(res => {
+  // 使用cheerio 解析HTML 文档  得到的是一个Jquery 对象
+  let $ = cheerio.load(res.data)
+  // 通过jquery 的方式去获取DOM 
+  // 获取img 的 src 属性
+  let srcs = $('.swiper-wrapper .swiper-slide a .bqppdiv1 img').each((i, element) => {
+    // 两种方法都可以得到
+    // 第一种是通过 DOM 元素自身的属性 获得值
+    // let imgUrl =element.attribs['data-original']
+
+    // 第二种是通过jQuery 对象的方法attr 取出元素的值
+    let imgUrl = $(element).attr('data-original')
+    // 得到对当前图片的描述
+    let imgText = $(element).parent().find('p').text()
+    // 请求到数据之后 开始写入到文件
+    async function main(url, imgText) {
+      let res = await downLoad(url, imgText)
+    }
+    main(imgUrl, imgText)
+  })
+})
+function downLoad(Url, imgText) {
+  return new Promise((resolve, reject) => {
+    // 解析 Url 地址 中的信息  得到后缀名
+    let ext = parseInfo(Url)
+    // 设计文件名字
+    let NameReg = /(?&lt;name&lt;.*?) -(.*?)/
+    let filename = NameReg.exec(imgText)[1]
+
+    // 判断路径是否存在
+    if (!fs.existsSync('./img')) {
+      // 创建目录
+      fs.mkdir('./img', (err) => {
+        if (err) {
+          console.log(err)
+        }
+      })
+    }
+    // 请求数据加载 到 文件 
+    ReqDataWFile(filename, Url, ext)
+    resolve('')
+  })
+}
+
+function parseInfo(imgUrl) {
+  let info = url.parse(imgUrl)
+   // 对象的结构赋值
+  let {
+    pathname
+  } = info
+  return path.extname(pathname)
+}
+function ReqDataWFile(filename, Url, ext) {
+  return new Promise((resolve, reject) => {
+    // 创建文件
+    let wf = fs.createWriteStream('img/' + filename + ext)
+    axios.get(Url, {
+      // 设置请求头的类型为Stream
+      responseType: "stream"
+    }).then(res => {
+      res.data.pipe(wf)
+      // 在文件写入完成的时候  监听 关闭文件
+      wf.on('close',function(){
+        wf.close()
+      })
+    })
+  })
+}
+          </code></pre>
+        </div>
+      </div>
+      <!-- #C10 -->
+      <div class="C">
+        <h1 id="C10">反爬虫代理</h1>
+        <div class="explain">
+          <p> 利用 ip 代理
+          </p>
+          <pre><code class="js">
+// 'proxy' 定义代理服务器的主机名称和端口
+// `auth` 表示 HTTP 基础验证应当用于连接代理，并提供凭据
+// 这将会设置一个 `Proxy-Authorization` 头，覆写掉已有的通过使用 `header` 设置的自定义 `Proxy-Authorization` 头。
+axios.get(url,{
+     proxy: {
+   host: '127.0.0.1',  // 请求代理主机
+   port: 9000,  // 代理主机端口
+   免费的不需要账户密码
+   auth: {
+     username: 'mikeymike',
+     password: 'rapunz3l'
+   }
+ },
+})</code></pre>
+        </div>
+      </div>
+      <!-- #C11 -->
+      <div class="C">
+        <h1 id="C11">Puppeteer</h1>
+        <div class="explain">
+          <p id="C111">出现背景
+            <em>
+              Chrome (linux macos ) Chrome(windows) 之后, Chrome 自带headless 无界面模式, 很容易自动化测试或爬虫, 但是如果和headless 模式进行交互,
+              就成为了一个问题,
+            </em>
+            <em>
+              Puppeteer 是谷歌官方出品的一个通过DevTools 协议控制headless Chrome 的Node库, 可以通过Puppeteer 的提供的API , 直接控制chrome
+              模拟大部分用户操作来进行UI Test 或者作为爬虫访问页面来收集数据
+            </em>
+          <pre><code class="js">
+中文文档
+https://zhaoqize.github.io/puppeteer-api-zh_CN/#/
+            </code></pre>
+          </p>
+        </div>
+        <div class="explain">
+          <p id="C112">作用
+            <em>生成页面PDF</em>
+            <em>抓取SPA 应用, 并生成预渲染内容, ssp 服务器渲染</em>
+            <em>自动提交表单 进行UI 测试, 键盘输入等</em>
+            <em>创建一个实时更新的自动化测试环境, 使用最新的JavaScript和浏览器功能, 直接在最新版本的Chrome 中执行测试</em>
+            <em>捕获网站的 timeline trace , 用来帮助分析性能问题</em>
+            <em>测试浏览器扩展</em>
+          </p>
+        </div>
+        <div class="explain">
+          <p id="C113">安装
+            <em>Puppeteer 本身依赖 6.4 以上的Node , </em>
+            <em>Puppeteer 是一个npm 包,</em>
+            <em>Puppeteer 安装时自带一个最新版本的Chromium , 可以通过设置环境变量或npm config 中的PUPPETEER_SKIP_CHROMIUM_DOWNLOAD 跳过下载, </em>
+          </p>
+          <pre><code class="js">
+npm install puppeteer 
+// 如果npm 安装失败  使用cnpm 安装
+npm install -g cnpm --registry=https://registry.npm.taobao.org
+          </code></pre>
+        </div>
+        <div class="explain">
+          <p id="C114">概述
+            <em>Puppeteer 使用 DevTools Protocol 与浏览器通信互</em>
+            <em>Browser 实例可以拥有多个浏览器上下文</em>
+            <em>BrowserContext 实例定义了一个浏览器对话, 可以拥有多个页面</em>
+            <em>Page 至少有一个frame: main frame . 可能还有其他iframe 创建的frame 或 标签</em>
+            <em>Frame 至少有一个可执行上下文 - 默认执行上下文-在其中执行frame 的JavaScript . 一个Frame 可能有与extensions 有关联的其他执行上下文</em>
+            <em>worker 具有单个执行上下文, 便于与WebWorkers 交互</em>
+          </p>
+          <p>Puppeteer 提供了一种启动Chromium 实例的方法
+            <em>
+              puppeteer.launch([options])
+            </em>
+          <pre><code class="js">
+options 在浏览器上设置的一组可配置选项
+ ignoreHTTPSErrors &lt;boolean&lt; 是否在导航期间忽略 HTTPS 错误. 默认是 false
+ headless &lt;boolean&lt; 是否以 无头模式 运行浏览器。默认是 true，除非 devtools 选项是 true
+ slowMo &lt;number&lt; 将 Puppeteer 操作减少指定的毫秒数。这样你就可以看清发生了什么，这很有用
+ </code></pre>
+          </p>
+        </div>4
+        <div class="explain">
+          <p id="C115">案例</p>
+          <pre><code class="js">
+page.$$eval() 使得回调函数在浏览器的控制台中输出  //  注意 函数中的输出在浏览器的控制台 
+page.$eval() 回调函数的输出一样在浏览器的控制台   //  注意 函数中的输出在浏览器的控制台  
+page.$(selector) 此方法在页面内执行 document.querySelector()  // 没有指定选择器 返回null  可以用来做click
+page.$$(selector)  在页面中执行document.querySelectorAll()   // 没有指定选择器 返回[]  可以用来做click
+          </code></pre>
+          <pre><code class="js">
+const puppeteer = require('puppeteer')
+async function main() {
+  // puppeteer .launch() 
+  // 可以传入一个参数, 可以配置未无界面浏览器, 也可以配置为有界面浏览器  
+  // 无界面性能更高, 有界面一般用于调试开发
+
+  const options = {
+    // false 有界面, true 无界面
+    headless: false,
+    defaultViewport: { // 设置页面的大小
+      width: 1200,
+      height: 1000
+    }
+  }
+  // // 启动实例
+  let browser = await puppeteer.launch(options)
+  // 创建页面
+  const page = await browser.newPage()
+  // 打开页面
+  await page.goto('https://kan.2345.com/')
+  // 页面截图
+  // await page.screenshot({
+  //   path: 'screee.png'
+  // })
+  // 获取页面数据
+  await page.$$eval('div.v_picConBox ul li', element => {  //函数参数得到的是一个元素
+   element.forEach((item, i) => {  // 如果返回的是一个数组  可以遍历
+     console.log(item)  
+   })
+  } ) // 第三个参数arg 是传给pagfunction 的参数,可以通过这个把args 传入进去  $$ea-val 的返回值是 pageFunction  的返回值
+}
+main()
+ </code></pre>
+          <pre><code class="js">
+ // 使得input  获得焦点
+ await input.focus()
+ // 输入框获得内容
+ // Keyboard() 管理虚拟键盘, 高阶接口为keyboard.type 接受原始字符
+ // 在页面上生成对应的  keydown  keypress input keyup 事件
+ // keyboarad.type(text[,options])  text&gl;string&gt; 输入焦点的文本  options &gl;Obejct&gt; - delay(number)  按下间隔的事件 默认为0 
+ // returns&gl;promise&gt;
+ await page.keyboard.type('唐人街')
+ // keyboard.down(key[,options]) key&gl;String&gt;  按下的键名 , options &gl;Object&gt; -- text&gl;string&gt;如果指定, 则使用此文本生成输入事件   &gl;returns&gt; &gl;Promise&gt;
+ // 并分化一个keydown 事件  
+ // keyboard.keypress(key[,options])  key 按下的键名  同上
+ // keyboard.up(key)  要释放的键名, returns&gl;Promise&gt;
+// 对获取到的元素金点击事件
+ await page.click('.search-box .search-box-out')
+ </code></pre>
+        </div>
+      </div>
+      <!-- #C12 -->
+      <div class="C">
+        <h1 id="C12">HTTP</h1>
+        <div class="explain">
+          <p id="C121">简介
+            <em>http 协议(Hyper Text Transfer Protocal ) 超文本传输协议, 是从万维网到服务器端传输文本到本地浏览器的传输协议</em>
+            <em>HTTP 是基于TCP/IP 通信协议的来传递数据, </em>
+            <em>HTTP 是一个属于应用层的面向对象的协议, </em>
+            <em>HTTP 协议工作于客户端 / 服务端 架构之上, 浏览器作为HTTP 客户端通过URL 向HTTP 服务端即WEB 服务端发送所有请求, Web 服务端根据接受到的数据请求后,
+              向客户端发送响应数据</em>
+          </p>
+        </div>
+        <div class="explain">
+          <p id="C122">特点
+            <em>简短快速</em>
+            <em>灵活</em>
+            <em>无连接</em>
+            <em>无状态</em>
+            <em>支持 B/S 以及 C/S Mode</em>
+          </p>
+          <pre><code class="js">
+            request 请求
+请求头 (请求相关的信息   Get )
+请求体  ( POST 表单传输的信息)
+
+Get没有请求体
+
+HTTP 响应数据
+状态行  消息报头  空行  响应正文
+
+          </code></pre>
+        </div>
+        <div class="explain">
+          <p id="C123">HTTP 状态码
+          </p>
+          <pre><code class="js">
+状态码一共有三位数字组成, 第一个数字定义了响应的类别, 共分五种类别
+1**：指示信息, 表示请求已接受, 继续处理
+2**：成功　表示请求已被成功接受 理解
+3**: 重定向, 要完成请求必须跟进一步的操作
+4**：客户端错误，　请求有语法错误或请求无法是错误
+5**: 服务端错误, 服务器未能实现合法的请求
+          </code></pre>
+        </div>
+        <div class="explain">
+          <p id="C124">
+          </p>
+          <pre><code class="js">
+200 ok  客户端请求成功
+400 Bad Request  客户端请求有语法错误, 不能被服务器所理解
+401 Unauthorized  请求未经授权
+403 Forbidden 服务器收到请求, 但是拒绝提供服务
+404 Not Found 请求资源不存在, 输入了错误的URL
+500 internal Server Error  服务器发生了不可预期的错误
+503 Server Unabailable 服务区当前不能处理客户端的请求, 一段时间后可能会恢复正常
+          </code></pre>
+        </div>
+        <div class="explain">
+          <p id="C125">请求方法</p>
+          <pre><code class="js">
+HTTP 1.0 Get POST HEAD 
+get 请求指定的页面信息, 并返回实体主体
+post 向指定资源提交数据进行处理请求, 数据被包含在请求体中, post 请求可能会导致新的资源的建立和已有资源的修改
+HEAD 类似于get 请求, 只不过返回的响应中没有具体的内容, 用于获取报头
+
+HTTP 1.1 TRACE CONNECT  PUT  OPTIONS DELETE 
+PUT 从客户端向服务器传送的数据取代指定的文档的内容
+DELETE 请求服务器删除指定的页面
+CONNECT HTTP 1.0 协议中预留给能够将连接改为管道方式的代理服务器
+OPTIONS 允许用户查看服务器的性能
+TRACE 回显服务器收到的亲戚, 主要用于测试和诊断
+          </code></pre>
+        </div>
+        <div class="expain">
+          <p id="C126">
+            浏览器输入URL地址 到页面的渲染过程
+            <em>客户端连接到Web 服务器</em>
+            <em>发送HTTP 请求</em>
+            <em>服务器接受请求 并 返回HTTP 响应</em>
+            <em>释放TCP连接</em>
+            <em>客户端浏览器解析HTML 内容 并显示内容</em>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="./js/common/request.js"></script>
+<script src="./js/common/flexible.js"></script>
+<!-- 当前文件js -->
+<script src="./js/node/node-index.js"></script>
+<!-- 引入高亮js -->
+<script src="./highlight/highlight.min.js"></script>
+<script src="./highlight/languages/javascript.min.js"></script>
+<script>hljs.highlightAll();</script>
+
+</html>

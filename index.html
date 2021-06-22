@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>首页</title>
+  <link rel="stylesheet" href="./css/common/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/common/normalize.css">
+  <link rel="stylesheet" href="./css/common/media.min.css">
+  <link rel="stylesheet" href="./css/common/NavBar.min.css">
+  <link rel="stylesheet" href="./css/home/swiper.css">
+  <link rel="stylesheet" href="./css/home/loading.css">
+  <link rel="stylesheet" href="./css/home/home.min.css">
+</head>
+
+<body>
+  <!-- 等待动画开始 -->
+  <div class="loading">
+    <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <line class="mark" x1="0" y1="0" x2="0" y2="0" fill="none" stroke="#5BB4D8" stroke-miterlimit="10"
+          stroke-linecap="none" stroke-width="12" />
+      </defs>
+      <g class="container1" />
+      <g class="container2" />
+    </svg>
+  </div>
+  <!-- 等待动画结束 -->
+  <!-- 头部颜色 -->
+  <div class="container-fluid">
+    <div class="adver"></div>
+  </div>
+  <!-- 主体部分 -->
+  <div class="container">
+    <!-- 导航栏开始 -->
+    <div class="row">
+      <div class="NavBar special">
+        <div class="Nav_Left">
+          <p class="qs">QS</p>
+        </div>
+        <div class="Nav_Right">
+          <ul>
+            <li class="search">
+              <input type="text" placeholder="Search">
+            </li>
+            <li class="learn">
+              学习笔记 </li>
+            <li class="Node"><a href="./node.html">Node</a></li>
+            <li class="Vue"><a href="./vue.html">Vue</a></li>
+            <li class="React"><a href="./react.html">React</a></li>
+          </ul>
+        </div>
+        <div class="Nav_Center">
+          <input type="text" placeholder="Search">
+        </div>
+        <div class="Nav_End">
+          <img src="./img/more.png" alt="">
+        </div>
+      </div>
+    </div>
+    <!-- 导航栏结束 -->
+
+    <!-- 轮播图开始 -->
+    <div class="swiper-container swiper1">
+      <div class="swiper-wrapper warpper1">
+        <div class="swiper-slide slide1">
+          <img src="./img/node.jpg" alt="">
+        </div>
+        <div class="swiper-slide slide1">
+          <img src="./img/react.jpg" alt="">
+        </div>
+        <div class="swiper-slide slide1">
+          <img src="./img/vue.jpg" alt="">
+        </div>
+      </div>
+      <!-- Add Pagination -->
+      <div class="swiper-pagination pagination1"></div>
+    </div>
+    <!-- 轮播图结束 -->
+
+    <!-- 轮播图开始  超小页面下 -->
+    <div class="swiper-container swiper2">
+      <div class="swiper-wrapper warpper2">
+        <div class="swiper-slide slide2">
+          <img src="./img/vue.jpg" alt="">
+        </div>
+        <div class="swiper-slide slide2">
+          <img src="./img/node.jpg" alt="">
+        </div>
+        <div class="swiper-slide slide2">
+          <img src="./img/react.jpg" alt="">
+        </div>
+      </div>
+      <div class="swiper-pagination pagination2"></div>
+    </div>
+    <!-- 轮播图结束 超小页面下 -->
+
+    <!-- 侧边栏开始 -->
+    <div class="slideBar">
+      <div class="title">
+        <p>学习笔记</p>
+      </div>
+      <div class="diary_list">
+        <a target="_blank" href="./vue.html">Vue</a>
+        <a target="_blank" href="./node.html">Node</a>
+        <a target="_blank" href="./react.html">React</a>
+      </div>
+      <div class=" feedback">
+        <a href="./feedback.html" target="_black">反馈</a>
+      </div>
+    </div>
+    <!-- 侧边栏结束 -->
+
+    <!-- 网站设计简介开始 -->
+    <div class="website-presume">
+      <div class="row">
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12  skill">
+          <div class="title">
+            <h2>技术</h2>
+          </div>
+          <div class="content">
+            <ul>
+              <li><a href="https://bootstrap.css88.com/">BootStrap</a></li>
+              <li><a href="https://www.swiper.com.cn/">Swiper</a></li>
+              <li><a href="https://www.runoob.com/cssref/css3-pr-mediaquery.html">MediaQuery</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
+          <div class="title">
+            <h2>设计人员</h2>
+          </div>
+          <div class="content">
+            <ul>
+              <li>
+                <p>由本学生亲自完成</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12  col-lg-hidden-3">
+          <div class="title">
+            <h2>过程</h2>
+          </div>
+          <div class="content">
+            <ul>
+              <li>
+                <p>首先完成HTML解构</p>
+              </li>
+              <li>
+                <p>完成对css编写</p>
+              </li>
+              <li>
+                <p>完成效果的初步实现</p>
+              </li>
+              <li>
+                <p>综合修改</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12  reflect">
+          <div class="title">
+            <h2>借鉴</h2>
+          </div>
+          <div class="content">
+            <ul>
+              <li>本网站综合借鉴 <a href="https://cn.vuejs.org/">Vue</a> 官网</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- 网站设计简介结束 -->
+  </div>
+  <!--  -->
+  <!-- 尾部 -->
+  <footer class="container-fluid">
+    <div class="container">
+      <p>Copyright © 2021-6-20 青山 </p>
+    </div>
+  </footer>
+</body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="./js/common/request.js"></script>
+<script src="./js/common/swiper.min.js"></script>
+<script src="./js/common/flexible.js"></script>
+<script src="./js/home/swiper.js"></script>
+<script src="./js/home/TweenMax.min.js"></script>
+<script src='./js/home/loadingIndex.js'></script>
+<script src="./js/home/home.js"></script>
+
+</html>

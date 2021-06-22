@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>React</title>
+  <!-- 响应式库 -->
+  <link rel="stylesheet" href="./css/common/bootstrap.min.css">
+  <!-- NavBar样式 -->
+  <link rel="stylesheet" href="./css/common/NavBar.min.css">
+  <!-- 公共文本媒体查询文件 -->
+  <link rel="stylesheet" href="./css/common/media.min.css">
+  <!-- 初始化样式 -->
+  <link rel="stylesheet" href="./css/common/normalize.css">
+  <!-- 当前文件媒体查询文件 -->
+  <link rel="stylesheet" href="./css/node/node-media.css">
+  <!-- 当前文件style -->
+  <link rel="stylesheet" href="./css/node/style.min.css">
+  <!-- 引入高亮库 -->
+  <link rel="stylesheet" href="./highlight/styles/base16/eighties.min.css">
+
+<body>
+  <div class="container-fluid">
+    <!-- goTop 开始 -->
+    <div class="goTop"><img src="./img/goTop.png" alt=""></div>
+    <!-- goTop 结束 -->
+    <!-- 导航栏开始 -->
+    <div class="row">
+      <div class="NavBar">
+        <div class="Nav_Left">
+          <p class="qs">QS</p>
+        </div>
+        <div class="Nav_Right">
+          <ul>
+            <li class="search">
+              <input type="text" placeholder="Search">
+            </li>
+            <li class="learn">
+              学习笔记 </li>
+            <li class="Node"><a href="./node.html">Node</a></li>
+            <li class="Vue"><a href="./vue.html">Vue</a></li>
+            <li class="React"><a href="./react.html">React</a></li>
+          </ul>
+        </div>
+        <div class="Nav_Center">
+          <input type="text" placeholder="Search">
+        </div>
+        <div class="Nav_End">
+          <img src="./img/more.png" alt="">
+        </div>
+      </div>
+    </div>
+    <!-- 导航栏结束 -->
+
+    <!-- 侧边栏开始  -->
+    <div class="sliderBar">
+      <div class="title">
+        <h3>React 笔记</h3>
+      </div>
+      <div class="feedback">
+        <a href="./feedback.html" target="_black">反馈</a>
+      </div>
+    </div>
+    <!-- 侧边栏结束  -->
+    <div class="content">
+      <div class="title">学习笔记</div>
+      <!-- #C1 -->
+      <div class="C">
+        <h1 id="C1"></h1>
+        <div class="explain">
+          <p>利用{} 复制一个对象</p>
+          <pre><code class="js">
+let a = {a:"奥力给"}
+let b = {...a,a:1, c:2}  // 后面的参数如果源对象有着替换, 无则添加
+--> b = {a:1,b:2}
+</code></pre>
+        </div>
+        <div class="explain">
+          <p>嵌套解构
+            <em>
+              连续解构赋值
+            </em>
+          <pre><code class="js">
+已知: this.element.value = 3
+const {element:{value}} = this  // 对解构出来的element 再次解构, 没有对element解构出来
+console.log(value)
+              </code></pre>
+          <p><em>
+              连续解构赋值并重命名
+            </em></p>
+          <pre><code class="js">
+const obj = {
+  a:{
+    b:1
+  }
+}
+const {a:{b:data}}  = obj   // 对比进行解构且进行重命名, 不对a 进行解构
+console.log(data)  //1</code></pre>
+          </p>
+
+        </div>
+        <div class="explain">
+          <p>消息订阅和发布
+            <em>先订阅， 在发布，</em>
+            <em>适用于任意组件间的通信</em>
+            <em>要在组件销毁之前componentWillUnmount 中取消订阅</em>
+          <pre><code class="js">PubSub.unsubscribe( token )</code></pre>
+          </p>
+        </div>
+      </div>
+      <!-- #C2 -->
+      <div class="C">
+        <h1 id="C2"></h1>
+        <div class="explain">
+          <p id="C21"> <span>React </span>
+          <pre><code class="js">
+React 是用于构建用户界面的Javascript 库,
+  发送请求数据
+  处理数据( 过滤, 整理格式 )
+  操作DOM 呈现界面 ( React )
+</code></pre>
+          </p>
+        </div>
+        <div class="explain">
+          <p id="C22"> 开发者
+          <pre><code class="js">
+由FaceBook 开发, 且开源
+  起初由Facebook 的软件工程师 Jordan Walke 创建
+  2011年部署于Facebook 的 newsfeed 
+  随后在2012年部署于Instagram
+  随后在2012年部署于Instagram
+  2013年5月宣布开源
+  近些年正在被腾讯等大厂所使用
+.....
+</code></pre>
+          </p>
+        </div>
+        <div class="explain">
+          <p id="C23"> 学习原因
+          <pre><code class="js">
+原生的JavaScript 操作DOM 繁琐, 效率低
+使用JavaScript 直接操作DOM, 浏览器会进行大量的重绘重排
+原生JavaScript 没有组件化编码方案, 代码复用率低</code></pre>
+          </p>
+        </div>
+        <div class="explain">
+          <p id="C24"> 特点
+          <pre><code class="js">
+采用组件化模式, 声明式编码, 提高开发效率和组件复用率
+在React Native 中可以使用React 语法, 进行移动端开发</code></pre>
+          </p>
+        </div>
+        <div class="explain">
+          <p id="C25"> 高效的原因</p>
+          <pre><code class="js">
+使用虚拟DOM
+DOM Diffing 算法, 防止页面重绘</code></pre>
+        </div>
+      </div>
+      <!-- #C3 -->
+      <div class="C">
+        <h1 id="C3"></h1>
+        <h2 id="C31"></h2>
+        <div class="explain">
+          <p>
+            语法规则
+          </p>
+          <p>全称Javascript XML </p>
+          <p>标签属性任意: HTML 或 其他</p>
+          <p>标签名任意：HTML 或 其他</p>
+          <p>基本语法规则:
+          <pre><code class="js">
+- 遇到 &lt;  开头的, 以标签的语法解析, 
+- HTML 同名标签转换 为HTML 同名元素, 其他标签特殊解析
+- 标签中的js 表达式用 { } 包裹
+- 定义虚拟DOM  不写引号
+- 类名: className  (&lt;h1 className="aolige"&gt;&lt;/h1>)
+- 内联样式: {width:"20px",height:"30px" }
+- 虚拟DOM 只能有一个根标签
+- 标签必须闭合
+- 标签首字母
+  - ( 1 )  小写字母开头, 转换为HTML 同名的HTML 元素, 找不到, 报错
+  - ( 2 ) 大写字母开头, React 渲染对应的组件, 组件无定义, 报错 </code></pre>
+          </p>
+        </div>
+        <div class="explain">
+          <p id="C32">babel.js的作用
+            <em>
+              浏览器不能够直接解析 JSX, 用Babel转译为纯JS 代码
+            </em>
+            <em>
+              只要用了JSX, 在sctipt 的头标签上写 type="text/babel"
+            </em>
+          </p>
+
+        </div>
+      </div>
+      <!-- #C4 -->
+      <div class="C C4">
+        <h1 id="C4"></h1>
+        <div class="explain">
+          <p id="C41">函数式组件
+            <em>标签名大写, 表示是一个组件</em>
+            <em>有闭合标签, JSX 语法规则</em>
+            <em>babel 编译完成之后, 会开启严格模式 , 在函数中this 无法指向window</em>
+            <em>指定ReactDOM.render( &lt;Demo/&gt;,... ) 之后发生了什么
+              <i>React 解析组件标签, 找到了Demo 组件</i>
+              <i>发现组件是使用函数定义的 , 将返回的虚拟DOM 转为真是DOM, 随后趁现在页面中</i>
+            </em>
+          </p>
+          <pre><code class="js">
+function Demo(){
+  return &lt;h1&gt;函数式组件&lt;/h1&gt;
+}
+ReactDOM.render(&lt;Demo/&gt;,document.querySelector('#app'));
+          </code></pre>
+        </div>
+        <div class="explain">
+          <p id="#C42">类式编程
+            <em>必须继承一个React.Component 类</em>
+            <em>render 中的this
+              <i>Com 的实例对象</i>
+              <i>Com组件实例对象</i>
+            </em>
+          </p>
+          <pre><code class="js">
+class Com extends React.Component{
+  render(){
+    return (
+      &lt;h1&gt;我是类式组件, 适用于复杂组件&lt;/h1&gt;
+    )
+  }
+}
+ReactDOM.render(&lt;Com/&gt;, document.querySelector('#app'))
+          </code></pre>
+          <p>执行之后发生了什么
+            <em>React 解析组件标签, 找到Com 组件</em>
+            <em>发现组件时类定义的, 随后new 出来该类的实例对象, 并通过实例调用原型上的render 方法</em>
+            <em>将render 返回的虚拟DOM 转为真是DOM, 随后呈现在页面上</em>
+          </p>
+        </div>
+      </div>
+      <!-- #C5 -->
+      <div class="C">
+        <h1 id="C5"></h1>
+        <div class="explain">
+          <p id="C51">理解
+            <em>state 是组件对象最重要的属性, 值是一个对象</em>
+            <em>
+              组件被称为状态机, 通过更新组件的state 来更新对应的页面显示( 重新渲染组件 )</em>
+          </p>
+        </div>
+        <div class="explain">
+          <p id="C52">注意
+            <em>组件中render 方法 的this 是组件实例对象</em>
+            <em>组件自定义的方法this 为 undefined
+              <i>强制绑定this, 通过函数对象的bind()</i>
+              <i>箭头函数</i></em>
+            <em>状态数据, 不可以直接修改和更新, 通过 this.setState({key:value})</em>
+          </p>
+          <p>在通过事件绑定的时候, this 的指向是undefined, 在构造器中通过将原型对象上的方法复写到当前实例的方式 bind 修改this 的指向</p>
+          <pre><code class="js">
+constrcutor(){
+  // 后面的this 是原型对象上的, 因为是继承了React 的实例, 前面的this 是当前实例的
+  this.aoligei = this.aoligei.bind(this)
+}
+render(
+// 这里函数调用是直接调用, 函数中的this 是undefined
+&lt;p onClick="this.aoligei"&gt;&lt;/p&gt;
+)</code></pre>
+          <p>React 的状态的值不能够直接更改, 通过setState({ key: value}) 更改
+            <em>且通过setState更改的方式是合并, 而不是替换</em>
+          </p>
+          <pre><code class="js">
+&lt;script type="text/babel"&gt;
+  class Com extends React.Component {
+      constructor(props) {
+        super(props)
+        this.state = { isHot: true }
+        // 解决toggle 中的this 指向
+        this.toggle = this.toggle.bind(this)
+      }
+      toggle() {
+        // 状态不能够直接更改, 要借用一个内置的API 更改
+        // this.state.isHot = !this.state.isHot
+        // this.setState({isHot:!isHot})  
+        
+        // 状态必须通过setState更改, 且更新是一种合并, 不是替换
+        this.setState({isHot:!this.state.isHot})
+      }
+      render() {
+        return (
+          // 此处的this.toggle 的this 指向是window , 但是在方法中自动开启严格模式, 为 undefined
+          &lt;h1 onClick={this.toggle}&gt;
+            {' '}
+            今天的天气真{this.state.isHot ? '炎热' : '凉爽'}
+          &lt;/h1&gt;
+        )
+      }
+    }
+    ReactDOM.render(&lt;Com /&gt;, document.querySelector('#app'))
+&lt;/script&gt;</code></pre>
+        </div>
+        <div class="explain">
+          <p id="C53">简写</p>
+          <pre><code class="js">
+  &lt;sciprt type="text/babel"&gt;
+    class Com extends React.Component {
+        // 直接在类中定义
+    state = {isHot:true}
+        // 自定义方法: 等号赋值 + 箭头函数
+        toggle = () =&gt; {
+            const isHot = this.state.isHot
+            this.setState(isHot:!isHot)
+        }
+        render(){
+            return {
+                &lt;h1 onClick={this.toggle}&gt;今天的天气时{this.state.isHot}&lt;/h1&gt;
+            }
+        }
+    }
+&lt;/sciprt&gt;
+          </code></pre>
+        </div>
+      </div>
+      <!-- #C6 -->
+      <div class="C">
+        <h1 id="C6"></h1>
+        <div class="explain">
+          <p id="C61">理解
+            <em>每个组件对象都有一个props 属性</em>
+            <em>组件标签中的所有属性都保存在props中</em>
+            <em>props 中的值是只读的 , 不允许修改</em>
+          </p>
+          <p id="C62"> 作用
+            <em>
+              组件内部不要修改props 数据
+            </em>
+          <pre><code class="js">
+// 使用标签属性
+render(){
+const {name, age} = this.info
+	return (
+		&lt;ul&gt;
+			&lt;li&gt;{name}&lt;/li&gt;
+			&lt;li&gt;{age}&lt;/li&gt;
+		&lt;/ul&gt;
+	)
+}
+// jsx 中没有数据类型, 使用{} 包含数字
+ReactDOM.render(&lt;/ Com name="奥力给" age={19}&gt;, 标签)
+
+// 使用对象语法
+render(){
+const {name, age} = this.info
+	return (
+		&lt;ul&gt;
+			&lt;li&gt;{name}&lt;/li&gt;
+			&lt;li&gt;{age}&lt;/li&gt;
+		&lt;/ul&gt;
+	)
+}
+const info = {name:'奥力给',age:10}
+// 这里的{...info}  花括号是React的表达式语法, ...info 并不能展开对象, 但是于babel 和 react 让... 可以展开对象
+ReactDOM.render(&lt;/ Com {...info}&gt;, 标签)
+            </code></pre>
+          </p>
+          <p id="C63">限制props
+            <em>必须有 isRequired</em>
+            <em>类型 </em>
+          <pre><code class="js">
+Com.propTypes = {
+  name:PropTyps.string.isRequired  // 限制为必有 和一个字符串
+  age:PropTypes.number // 限制为一个数字
+  call:PropTypes.func
+
+}</code></pre>
+          <em>默认值</em>
+          <pre><code class="js">
+Com.defaultProps = {
+  age:10,
+  sex:"男"
+
+}</code></pre>
+          </p>
+          <p id="C64">简写方式
+            <em>因为对类直接添加属性,就是添加在类的本身, 而不是实例对象 </em>
+            <em>类的内部用static 定义的属性和方法, 也是定义在类的本身, 而不是实例对象中</em>
+          <pre><code class="js">
+class s {
+  static a = 10
+}
+相等于
+class s{
+}
+s.a = 10</code></pre>
+          </p>
+          <p id="C65">类式组件中的构造器和 props
+            <em>
+              react中的构造器, 仅仅适用于两种情况
+              <i>通过this .state 初始化state</i>
+              <i>为事件处理函数绑定实例</i>
+            </em>
+            <em>
+              构造器是否接受props ,是否传递给super, 取决于是否希望在构造器中共通过this 访问pro
+            </em>
+          <pre><code class="js">
+class s {
+  constructor(props){
+    super(props)
+  }
+}</code></pre>
+          </p>
+          <p id="C66">函数式组件使用props
+            <em>
+              为函数式组件添加规则
+            </em>
+          <pre><code class="js">
+function Com(props) {
+  const { name, age, sex } = props
+  return (
+    &lt;ul&gt;
+      &lt;li&gt;{name}&lt;/li&gt;
+      &lt;li&gt;{age}&lt;/li&gt;
+      &lt;li&gt;{sex}&lt;/li&gt;
+    &lt;/ul&gt;
+  )
+}
+Com.propTypes = {  //staic 将属性放在类本身, 而不是实例对象
+  name: PropTypes.string.isRequired,
+  age: PropTypes.number,
+  sex: PropTypes.string
+
+}
+Com.defaultProps = {  // 增加在类的本身, 而不是实例对象
+  age: 10,
+  sex: "不男不女"
+}
+
+const info = {
+  name: "奥力给",
+  age: 109,
+
+}
+ReactDOM.render(&lt;Com {...info} /&gt;, document.querySelector('#app'))
+            </code></pre>
+          </p>
+        </div>
+      </div>
+      <!-- #C7 -->
+      <div class="C">
+        <h1 id="C7"></h1>
+        <div class="explain">
+          <p id="C71">理解
+            <em>组件内的标签可以定义ref 属性来表示自己</em>
+          </p>
+          <p id="C72">字符串形式的ref
+            <em>字符串形式的ref ( 不推荐使用 ) 存在效率问题,可能会在未来的版本中移出</em>
+          <pre><code class="js">
+this.refs.refName
+&lt;input ref="input1" /&gt;
+            </code></pre>
+          </p>
+          <p id="C72">回调函数形式的ref
+            <em>通过解构 this 获得ref 表示的标签</em>
+            <em>问题
+              <i>
+                回调函数中的ref 在更新组件的过程中会被执行两次, 第一次为null, 第二次会传入DOM 元素, 因为react 在每次渲染时会创建一个新的函数实例, React 会清空旧的ref, 并且设置新的
+              </i>
+            </em>
+            <em>解决
+              <i>
+                通过ref 的回调函数定义成class 的绑定的函数的方式可以避免
+              </i>
+            </em>
+          <pre><code class="js">
+render(
+  &lt;h1 ref={e => this.h1 = e}&gt;&lt;/h1&gt;
+)
+// 获取ref标识的文本
+const {h1}  = this
+
+// 通过抽离函数的形式解决问题
+saveH1 = (e) => {
+	this.h1 = e
+}
+render(
+	&lt;h1 ref={this.saveH1}&gt;&lt;/h1&gt;
+)
+            </code></pre>
+          </p>
+          <p id="C74"> createRef API
+            <em>通过React,createRef() 形式创建的, 会返回一个容器, 该容器可以存储一个被 ref 标识的节点</em>
+            <em>该容器是"专人专用"</em>
+            <em>一个容器只能够存储一个, 后面的ref 会 覆盖掉前面的ref</em>
+          <pre><code class="js">
+class Com1 extends React.Component {
+    // 创建一个ref 容器
+  myRef = React.createRef()
+  render(h) {
+    return (
+        // 存储ref
+        &lt;input ref={this.myRef} type="text" placeholder="点我提示数据" /&gt;
+    )
+  }
+}
+ReactDOM.render(< Com1 />, document.querySelector('#app'))
+            </code></pre>
+          </p>
+          <p id="C75">总结
+            <em>通过字符串形式创建的ref , 直接通过this.refs就可以获取, ( 尽量避免 )</em>
+            <em>回调函数的ref, 通过内联和绑定函数存储ref</em>
+            <em>createRef() 创建一个容器, 将元素存储</em>
+            <em>省略ref
+              <i>如果操作的是发生事件的元素的时候, 可以省略ref</i>
+              <i>通过event.target 来获取发生事件的DOM元素</i>
+            </em>
+          </p>
+        </div>
+      </div>
+      <!-- #C8 -->
+      <div class="C">
+        <h1 id="C8"></h1>
+        <div class="explain">
+          <p id="C81">
+            通过onxxx 属性定义的事件处理函数
+            <em>React 使用的是自定义(合成)事件, 而不是使用原生DOM事件 -- <b>更好的兼容性</b></em>
+            <em>React 中的时间是通过事件委托的方式处理的( 委托给组件最外层的元素 ) -- <b>高效</b></em>
+          </p>
+          <p>通过event.target 得到发生事件的DOM元素对象
+          </p>
+        </div>
+      </div>
+      <!-- #C9 -->
+      <div class="C">
+        <h1 id="C9"></h1>
+        <div class="explain">
+          <p id="C91"> 受控组件
+            <em>表单具有默认的 HTML 表单行为，即在用户提交表单后浏览到新页面。如果你在 React 中执行相同的代码，它依然有效。但大多数情况下，使用 JavaScript 函数可以很方便的处理表单的提交，
+              同时还可以访问用户填写的表单数据。实现这种效果的标准方式是使用“受控组件”</em>
+            <em>优势在于能省略掉ref</em>
+          </p>
+          <pre><code class="js">
+class Login extends React.Component {
+ // 初始化状态
+ state = {
+   username: "",
+   password: ""
+ }
+ // 保存用户在账号中
+ saveUsername = (e) => {
+   const { username } = this.state
+   this.setState({
+     username: e.target.value
+   })
+   console.log(this.state.username);
+ }
+ // 保存密码在状态中
+ savePassword = (e) => {
+   const { password } = this.state
+   this.setState({
+     password: e.target.value
+   })
+   console.log(this.state.password);
+ }
+ // 表单提交
+ submit = (e) => {
+   e.preventDefault();
+ 
+ }
+ render(h) {
+   return (
+     &lt;form action="" method="GET" onSubmit={this.submit}&gt;
+       用户名 &lt; input ref={e =&gt; this.username = e} type="text" name="username" onChange={this.saveUsername} /&gt;
+     密码 &lt; input ref={e =&gt; this.password = e} type="text" name="pwd" onChange={this.savePassword} /&gt;
+       &lt;input type="submit" value="提交" /&gt;
+     &lt;/form &gt;
+   )
+ }
+}
+ReactDOM.render(&lt; Login /&gt;, document.querySelector('#app'))
+          </code></pre>
+          <p id="C92"> 非受控组件
+            <em>在表单提交的时候, 去获取值,阻止默认行为</em>
+          <pre><code class="js">
+class Login extends React.Component {
+  showData = (e) => {
+    const { username, password } = this
+    alert(username.value, password.value)
+    // 取消表单的默认行为
+    e.preventDefault();
+  }
+  render(h) {
+    return (
+      &lt;form action="" method="GET" onSubmit={this.showData}&gt;
+        用户名 &lt; input ref={e =&gt; this.username = e} type="text" name="username" /&gt;
+      密码 &lt; input ref={e =&gt; this.password = e} type="text" name="pwd" /&gt;
+        &lt;input type="submit" value="提交" /&gt;
+      &lt;/form &gt;
+    )
+  }
+}
+ReactDOM.render(&lt; Login /&gt;, document.querySelector('#app'))</code></pre>
+          </p>
+        </div>
+      </div>
+      <!-- #C10 -->
+      <div class="C">
+        <h1 id="C10"></h1>
+        <div class="explain">
+          <p id="C101"> 高阶函数
+            <em>如果一个函数符合下面2个中的一个 , 那么该函数就是高阶函数
+              <i>若函数A, 接受的参数是一个函数, </i>
+              <i>若函数B, 调用的返回值是一个函数</i>
+            </em>
+          </p>
+          <p id="C102">
+            函数的柯里化
+            <em>
+              通过函数调用继续返回函数的方式, 实现多次接受形参最后统一处理函数编码的方式
+            </em>
+          </p>
+        </div>
+      </div>
+      <!-- #C11 -->
+      <div class="C">
+        <h1 id="C11"></h1>
+        <div class="explain">
+          <p id="C111">理解
+            <em>
+              组件从创建到死亡会尽力一些特定的阶段
+            </em>
+            <em>
+              React 组件中包含了一系列钩子函数( 生命周期回调函数, ) 会在特定的时刻调用
+            </em>
+            <em>我们在定义组件时, 会在特定的生命周期回调函数中, 做特定的工作</em>
+          </p>
+        </div>
+        <div class="explain">
+          <p id="C112">生命周期三个阶段( 旧 )
+            <em>初始化阶段: 由ReactDOM.render()触发---初次渲染
+              <pre><code class="js">
+-  constructor()
+-  omponentWillMount()  组件将要挂载
+-  render()  初始化渲染, 组件更新
+-  componentDidMount(     组件挂载完毕
+              </code></pre>
+            </em>
+            <em>更新阶段: 由组件内部this.setState() 或 父组件重新render 触发
+              <pre><code class="js">
+- shouldComponentUpdate()  组件是否应该更新
+- componentWillUpdate    组件将要更新
+- render()  初始化渲染, 组件更新完毕
+              </code></pre>
+            </em>
+            <em>卸载组件: 由ReactDOM.unmountComponentAtNode()触发
+              <pre><code class="js">
+- componentWillUnmount()  组件将要卸载
+              </code></pre>
+            </em>
+          </p>
+        </div>
+        <div class="explain">
+          <p id="C113">生命周期三个阶段( 新 )
+            <em>初始化阶段: 由ReactDOM.render()触发---初次渲染
+              <pre><code class="js">
+-  constructor()
+-  getDerivedStateFromProps  -- 新组件
+-  render()  初始化渲染, 组件更新
+-  componentDidMount(     组件挂载完毕
+              </code></pre>
+            </em>
+            <em>更新阶段: 由组件内部this.setState() 或 父组件重新render 触发
+              <pre><code class="js">
+- getDerivedStateFromProps -- 新组件                
+- shouldComponentUpdate()  组件是否应该更新
+- render()  初始化渲染, 组件更新完毕
+- getSnapshotBeforeUpdate -- 新组件
+- componentDidUpdate  组件更新完毕
+              </code></pre>
+            </em>
+            <em>卸载组件: 由ReactDOM.unmountComponentAtNode()触发
+              <pre><code class="js">
+- componentWillUnmount()  组件将要卸载
+              </code></pre>
+            </em>
+          </p>
+        </div>
+        <div class="explain">
+          <p id="C114">对比新旧组件
+            <em>在React17.x 的版本中
+              <i><span>componentWillMount componentWillReceiveProps componentWillUpdate</span> 需要加上<span>UNSAFE_</span>
+                的前缀</i>
+            </em>
+          <pre><code class="js">
+UNSAFE_componentWillMount              
+            </code></pre>
+          </p>
+        </div>
+      </div>
+      <!-- #C12 -->
+      <div class="C">
+        <h1 id="C12"></h1>
+        <div class="explain">
+          <p id="C121">DOM 的 diffing 算法
+            <em> diffing 算法
+              <i>最小粒度是标签</i>
+              <i>会逐级比较</i>
+            </em>
+          </p>
+          <p id="C122">
+            key的作用
+            <em>虚拟DOM 中的key 的作用</em>
+          <pre><code class="js">
+虚拟DOM 中的key 的作用
+- key 是虚拟DOM对象 的标识符, 在更新显示时key起到极其重要的作用
+- 当状态中的数据发生变化时, react 会根据 **新数据**, 生成**新的虚拟DOM**, 随后React 进行**新虚拟DOM** 与 **旧虚拟DOM**的diff 比较, 
+  1. 旧虚拟DOM中找到了与新虚拟DOM中相同的key
+     - 如果虚拟DOM中的内容没有变化, 直接使用之前的真实DOM
+     - 如果虚拟DOM中内容变了, 则生成新的真是DOM, 随后替换掉页面中之前的真实DOM
+  2. 旧虚拟DOM中没有找到与新虚拟DOM相同的key
+     - 根据数据生成新的虚拟DOM, 随后渲染到页面</code></pre>
+          <em>
+            用index对key 可能会造成的影响
+            <pre><code class="js">
+- 如果对数据集进行逆序添加, 删除等破坏初始顺序的操作
+  - 会产生没有必要的真是DOM更新 ====> 效率低
+- 如果结构中包含输入类的DOM
+  - 会产生错误DOM更新  ===> 界面出现问题
+- 如果不存在对数据的逆序添加, 删除等破坏初始顺序的操作, 仅仅用于渲染列表展示, 使用index  作为key 是没有问题的</code></pre>
+          </em>
+          <em>开发中如何选择key
+            <pre><code class="js">
+- 最好使用每条数据唯一的标识作为key, id, 手机号码, 身份证号
+- 如果确定只是简单的展示数据, 用index可以
+- 如果是顺序添加数组元素, 用index可以
+            </code></pre>
+          </em>
+          </p>
+
+        </div>
+      </div>
+      <div class="C">
+        <!-- #C13 -->
+        <h1 id="C13"></h1>
+        <div class="explain">
+          <p id="C131"> 错误
+            <em>如果npx create-react-app 报错, 将镜像换成国外的</em>
+          <pre><code class="js">
+npm config set registry https://registry.npmjs.org/
+            </code></pre>
+          <em>如果不行, 将python换成2.7.x的版本</em>
+          <em>删除yarn, yarn也会导致失败</em>
+          <em>再不行, 上网搜</em>
+          </p>
+          <p id="C132">react脚手架
+          <pre><code class="js">
+ - xxx脚手架, 用来帮助程序员快速创建一个基于xxx库的模板项目
+      - 包含了所有需要的配置, 语法检查, jsx编译, devServer
+      - 下载好入口所有的依赖
+      - 可以直接运行一个简单的效果
+   - react 提供了一个用于创建react 项目的脚手架库, create-react-app
+   - 项目的整体技术架构为：webpack + react + es6 + eslint
+   - 使用脚手架开发项目的特点是: 模块化, 组件化, 工程化
+ 创建项目并启动
+    安装:　  官网已经不建议使用create-react-app
+        npm i -g create-react-app // 可以不安装
+        npx create-react-app ProjectName
+    切换到创建的项目
+        create-react-app hello-react
+    进入到项目文件夹
+        cd hello-react
+    启动项目
+        npm/yarn start  </code></pre>
+          </p>
+          <p id="#c133"> 脚手架配置代理
+            <em>在src下面新建setupProxy.js 文件</em>
+            <em>发送请求的地址必须是当前脚本运行的地址和端口</em>
+          <pre><code class="js">
+const proxy = require('http-proxy-middleware')
+module.exports = function (app) {
+  app.use(
+    proxy('/api1', {  // 遇见/api1 前缀的请求就会触发代理
+      target: 'http://172.20.10.3:8080',
+      changeOrigin: true, // 控制服务器收到的响应头中Host字段的值,标识请求从哪里发出
+      pathRewrite: { "^/api1": "" }  // 重写请求路径, 因为api1本身不存在, 只是未来标识代理请求, 替换为一个空字符串
+      // http://172.20.10.3:3000/api1/book
+      // http://172.20.10.3:8080/book
+    })
+  )
+} </code></pre>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="./js/common/request.js"></script>
+<script src="./js/common/flexible.js"></script>
+<!-- 当前文件js -->
+<script src="./js/react/index.js"></script>
+<!-- 引入高亮js -->
+<script src="./highlight/highlight.min.js"></script>
+<script src="./highlight/languages/javascript.min.js"></script>
+<script>hljs.highlightAll();</script>
+
+</html>

@@ -1,0 +1,242 @@
+a {
+  color: black;
+  text-decoration: none;
+}
+li {
+  list-style: none;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.container-fluid {
+  margin: 0;
+  padding: 0;
+}
+.container {
+  background-color: #fff;
+}
+body {
+  background-color: #fff !important;
+}
+// 广告位置
+.adver {
+  width: 100%;
+  height: 0.234375rem;
+  background-color: #42b983;
+  position: fixed;
+  top: 0;
+  z-index: 999999;
+}
+.NavBar {
+  margin-top: 0.234375rem;
+}
+
+// 轮播图开始
+.swiper1,
+.swiper2 {
+  margin-top: 0.78125rem !important;
+}
+.swiper1 {
+  margin-top: 0.546875rem;
+  width: 100%;
+  height: 2.34375rem;
+}
+.slide1 {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  transition: 300ms;
+  transform: scale(0.8);
+  img {
+    width: 150%;
+    height: 100%;
+  }
+}
+.swiper-slide-active {
+  position: relative;
+  z-index: 999;
+}
+.swiper-slide-active,
+.swiper-slide-duplicate-active {
+  transform: scale(1);
+}
+// 轮播图结束
+
+// 超小屏幕  轮播图开始
+.swiper2 {
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+.slide2 {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  img {
+    width: 100% !important;
+    height: 2.34375rem !important;
+  }
+}
+.pagination2 {
+  display: none;
+}
+// 超小屏幕  轮播图结束
+
+// 侧边栏
+.slideBar {
+  position: fixed;
+  top: 0.234375rem;
+  left: -1.875rem;
+  bottom: 0;
+  width: 1.875rem;
+  z-index: 2;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s linear;
+  .title {
+    width: 100%;
+    p {
+      text-align: center;
+      font-size: 0.125rem;
+      margin-top: 0.078125rem;
+      color: #42b983;
+      letter-spacing: 0.078125rem;
+    }
+  }
+  .diary_list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 0.703125rem;
+    a {
+      font-size: 0.109375rem;
+      flex: 1;
+      letter-spacing: 0.007813rem;
+      text-decoration: none;
+    }
+    a:hover {
+      color: #42b983;
+      text-decoration: underline;
+    }
+  }
+  .feedback {
+    width: 100%;
+    height: 0.234375rem;
+    text-align: center;
+    margin-top: 0.15625rem;
+    a {
+      color: #4e6ef2 !important;
+      font-size: 0.15625rem;
+    }
+  }
+}
+
+// 网站设计简介
+.website-presume {
+  width: 100%;
+  padding-top: 0.3125rem;
+  text-align: center;
+  .row > div {
+    overflow: hidden;
+    margin-bottom: 0.117188rem;
+  }
+  ul {
+    li {
+      font-size: 0.125rem;
+      a {
+        color: #42b983 !important;
+      }
+    }
+  }
+  h2 {
+    color: #42b983;
+    font-size: 0.195313rem;
+    font-weight: 400;
+    margin: 0;
+    padding: 0.5em 0;
+  }
+  .title {
+    margin-bottom: 0.078125rem;
+  }
+  .content {
+    color: #4f5959;
+    a {
+      color: #4f5959;
+    }
+  }
+}
+
+// 尾部
+footer.container-fluid {
+  background-color: rgb(71, 80, 80);
+  height: 230px;
+  .container {
+    background-color: rgb(71, 80, 80);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    p {
+      color: white;
+      word-spacing: 0.05em;
+      font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+      font-size: 0.125rem;
+    }
+  }
+}
+
+// 为loding的加载准备
+body {
+  > .container,
+  .container-fluid {
+    display: none;
+  }
+  .loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw !important;
+    width: 100vh;
+    margin: 0;
+    padding: 0;
+    background-color: #fffcf9;
+    overflow: hidden;
+    text-align: center;
+    svg {
+      width: 100%;
+      height: 100%;
+      visibility: hidden;
+    }
+  }
+}

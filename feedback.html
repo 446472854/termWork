@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>首页</title>
+  <link rel="stylesheet" href="./css/common/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/common/normalize.css">
+  <link rel="stylesheet" href="./css/common/media.min.css">
+  <link rel="stylesheet" href="./css/common/NavBar.min.css">
+  <link rel="stylesheet" href="./css/feedback/style.min.css">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="adver"></div>
+  </div>
+  <!-- 主体部分 -->
+  <div class="container">
+    <!-- 导航栏开始 -->
+    <div class="row">
+      <div class="NavBar">
+        <div class="Nav_Left">
+          <p class="qs">QS</p>
+        </div>
+        <div class="Nav_Right">
+          <ul>
+            <li class="search">
+              <input type="text" placeholder="Search">
+            </li>
+            <li class="learn">
+              学习笔记 </li>
+            <li class="Node"><a href="./node.html">Node</a></li>
+            <li class="Vue"><a href="./vue.html">Vue</a></li>
+            <li class="React"><a href="./react.html">React</a></li>
+          </ul>
+        </div>
+        <div class="Nav_Center">
+          <input type="text" placeholder="Search">
+        </div>
+        <div class="Nav_End">
+          <img src="./img/more.png" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="row content">
+      <h1 class="feedTitle">问题反馈</h1>
+      <form action="http://localhost:8080/vertify">
+        <table>
+          <tr>
+            <td><span>姓名</span></td>
+            <td><input type="text" name="name" autocomplete="off" required></td>
+            <td class="form_error"><img src="./img/form_error.png" alt=""></td>
+            <td class="form_right"><img src="./img/form_right.png" alt=""></td>
+          </tr>
+          <tr>
+            <td><span>电话</span></td>
+            <td><input type="number" name="tel" required></td>
+            <td class="form_error"><img src="./img/form_error.png" alt=""></td>
+            <td class="form_right"><img src="./img/form_right.png" alt=""></td>
+          </tr>
+          <tr>
+            <td><span>分类</span></td>
+            <td> <select name="backCate" id="backCate" required>
+                <option value="1">功能建议</option>
+                <option value="2">内容建议</option>
+                <option value="3">BUG反馈</option>
+                <option value="4">界面建议</option>
+                <option value="5">交互建议</option>
+                <option value="6">其他</option>
+              </select></td>
+          </tr>
+          <tr>
+
+            <td><span>我要反馈</span></td>
+            <td><textarea name="feedContent" id="feedContent" cols="30" rows="10" required></textarea></td>
+          </tr>
+          <tr>
+            <td>填写时间</td>
+            <td><input type="text" readonly class="time" name="time"></td>
+          </tr>
+          <tr>
+            <td> <input type="submit" value="提交"></td>
+          </tr>
+        </table>
+      </form>
+    </div>
+    <!-- 导航栏结束 -->
+  </div>
+</body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="./js/common/request.js"></script>
+<script src="./js/common/flexible.js"></script>
+<!-- 本文件js文件 -->
+<script src="./js/feedback/index.js"></script>
+
+</html>

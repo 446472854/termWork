@@ -1,0 +1,35 @@
+@media screen and (max-width: 767px) {
+  .sliderBar {
+    position: absolute;
+    left: -2.34375rem;
+  }
+  .content {
+    box-sizing: border-box;
+    position: absolute;
+    width: 100% !important;
+    top: 0.390625rem;
+    left: 0;
+    transition: all 0.3s ease-in;
+    padding: 0 0.15625rem !important;
+  }
+  .content div {
+    width: 100% !important;
+  }
+}
+@media screen and (min-width: 768px) {
+  body > div > div > div > div.Nav_Left {
+    margin-left: 0.3125rem;
+  }
+  body > div > div > div > div.Nav_Right > ul {
+    padding: 0;
+    margin-right: 0.3125rem;
+  }
+}
+@media screen and (max-width: 767px) {
+  .Nav_End {
+    margin-left: 0.195313rem !important;
+  }
+  .Nav_Left .qs {
+    margin-right: 0.195313rem !important;
+  }
+}
