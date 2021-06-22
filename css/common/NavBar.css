@@ -76,6 +76,7 @@ body::-webkit-scrollbar {
   justify-content: flex-end;
   align-items: center;
   height: 100%;
+  margin-right: 0.3125rem;
 }
 
 .NavBar .Nav_Right ul {

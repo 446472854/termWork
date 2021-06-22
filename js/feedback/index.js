@@ -16,9 +16,13 @@ class FeedBack {
     this.submit = document.querySelector('input[type=submit]')
     // 表单
     this.form = document.querySelector('form')
-    that = this
     this.formError = document.querySelectorAll('.form_error')
     this.formRight = document.querySelectorAll('.form_right')
+    // 评分
+    this.scoreImg = document.querySelectorAll('.score_img')
+    // 显示评分 
+    this.scoreInput = document.querySelector('.score_input')
+    that = this
     // 初始化
     this.init()
   }
@@ -32,6 +36,8 @@ class FeedBack {
     this.vertifyName()
     // 验证名字
     this.vertifyTel()
+    // 评分改变
+    this.changeScore()
     // 表单提交
     this.formSubmit()
   }
@@ -131,11 +137,44 @@ class FeedBack {
     that.feedBackCon.value = ''
     that.cate.value = 1
   }
+  //评分改变
+  changeScore () {
+    for (let a = 0; a < this.scoreImg.length; a++) {
+      this.scoreImg[a].onclick = function (e) {
+        let index = this.getAttribute('data-index')
+        console.log(index);
+        switch (index) {
+          case '1':
+            that.scoreInput.value = '1.0分数';
+            break;
+          case '2':
+            that.scoreInput.value = '2.0分';
+            break;
+          case '3':
+            that.sco
+            that.scoreInput.value = '3.0分';
+            break;
+          case '4':
+            that.scoreInput.value = '4.0分';
+            break;
+          case '5':
+            that.scoreInput.value = '5.0分';
+            break;
+        }
+        console.log(that.scoreInput.value);
+        for (let a = 0; a < that.scoreImg.length; a++) {
+          if (a < index) {
+            that.scoreImg[a].src = './img/good_score.png'
+          } else {
+            that.scoreImg[a].src = './img/poor_score.png'
+          }
+        }
+      }
+    }
+  }
 }
 
-const f = new FeedBack()
-
-
+new FeedBack()
 const qs = document.querySelector('body > div.container > div:nth-child(1) > div > div.Nav_Left > p')
 qs.onclick = () => {
   window.location.href = './index.html'

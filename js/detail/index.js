@@ -1,5 +1,5 @@
 window.onload = async () => {
-  axios.defaults.timeout = 5000;
+  axios.defaults.timeout = 3000;
   function waitfor () {
     return new Promise((resolve, reject) => {
       let timer = Math.random()
@@ -31,7 +31,7 @@ window.onload = async () => {
         axios.get(Html).then(res => {
           resolve(res.data)
         }).catch(err => {
-          resolve('超时')
+          resolve('')
         })
       }
     })
@@ -99,7 +99,6 @@ window.onload = async () => {
           slideBarFlag = 'f'
           slideBar.style.left = '-240px';
           slideBar.style.boxShadow = 'none';
-          console.log(slideBar.style.cssText);
         }
       }
       const body = document.body

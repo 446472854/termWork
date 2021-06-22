@@ -64,6 +64,9 @@
   .special {
     width: 750px !important;
   }
+  .website-presume > div > div {
+    height: 1.5625rem;
+  }
 }
 /* 中等屏幕 */
 @media screen and (min-width: 992px) {
@@ -73,6 +76,9 @@
   .special {
     width: 970px !important;
   }
+  .website-presume > div > div {
+    height: 1.5625rem;
+  }
 }
 /* 大屏幕 */
 @media screen and (min-width: 1200px) {
@@ -81,6 +87,9 @@
   }
   .special {
     width: 1170px !important;
+  }
+  .website-presume > div > div {
+    height: 1.5625rem;
   }
 }
 

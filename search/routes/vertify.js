@@ -7,7 +7,7 @@ router.all('*', (req, res, next) => {
 })
 router.use('/', async (req, res, next) => {
   let info = { ...req.query }
-  let strSql = 'insert into feedback values(?,?,?,?,?)'
+  let strSql = 'insert into feedback values(?,?,?,?,?,?)'
   switch (info.backCate) {
     case 1: info.backCate = '功能建议'; break;
     case 2: info.backCate = '内容建议'; break;
@@ -16,7 +16,7 @@ router.use('/', async (req, res, next) => {
     case 5: info.backCate = '交互建议'; break;
     case 6: info.backCate = '其他'; break;
   }
-  let a = await Myquery(strSql, [info.name, info.tel, info.backCate, info.feedContent, info.time])
+  let a = await Myquery(strSql, [info.name, info.tel, info.backCate, info.feedContent, info.time, info.score])
   if (a) {
     res.send('true')
   } else {

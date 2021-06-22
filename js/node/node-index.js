@@ -63,7 +63,8 @@ for (let a = 0; a < NodeData.length; a++) {
 // 设置点击滑出侧边栏
 const MoreImg = document.querySelector('body > div > div.row > div > div.Nav_End > img');
 const SliderBar = document.querySelector('body > div > div.sliderBar')
-SliderBar.style.boxShadow = 'none';
+
+SliderBar.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.2)';
 let ImgFlag = 'f'
 MoreImg.onclick = function (e) {
   if (ImgFlag == 'f') {
