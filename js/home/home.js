@@ -68,21 +68,19 @@ window.onload = () => {
       window.onclick = function () {
         if (slideBarFlag == 't') {
           slideBarFlag = 'f'
-          slideBar.style.left = '-240px';
+          slideBar.style.left = '-2.34375rem';
           slideBar.style.boxShadow = 'none';
         }
       }
       const body = document.body
-      window.onresize = function () {
-        if (body.clientWidth <= 768) {
-          if (slideBarFlag == 't') {
-            slideBarFlag = 'f'
-            slideBar.style.left = '0'
-          }
+      window.addEventListener('resize', () => {
+        if (body.clientWidth >= 768) {
+          slideBar.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.2)';
         } else {
           slideBar.style.left = '-2.34375rem'
+          slideBar.style.boxShadow = 'none';
         }
-      }
+      })
       resolve()
     })
   }

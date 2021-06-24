@@ -109,7 +109,7 @@ class FeedBack {
         let selectValue = this.cate.value
         let content = this.feedBackCon.value
         let time = this.time.value
-        let Url = `http://410df4c4.nat123.fun/vertify?name=${nameValue}&tel=${telValue}&backCate=${selectValue}&feedContent=${content}&time=${time}`
+        let Url = `http://wrt50sus.dongtaiyuming.net/vertify?name=${nameValue}&tel=${telValue}&backCate=${selectValue}&feedContent=${content}&time=${time}`
         await axios.get(Url).then(res => {
           let data = res.data
           if (data == true) {
