@@ -179,3 +179,60 @@ const qs = document.querySelector('body > div.container > div:nth-child(1) > div
 qs.onclick = () => {
   window.location.href = './index.html'
 }
+
+
+function controlComment () {
+  return new Promise((resolve, reject) => {
+    const catelis = document.querySelectorAll('.cate ul li ')
+    const contents = document.querySelectorAll('.showContent')
+    contents[0].style.display = 'block'
+    for (let a = 0; a < catelis.length; a++) {
+      catelis[a].onclick = function () {
+        for (let b = 0; b < catelis.length; b++) {
+          contents[b].style.display = 'none'
+          catelis[b].className = ''
+        }
+        catelis[a].className = 'active'
+        contents[a].style.display = 'block'
+      }
+    }
+    resolve()
+  })
+}
+
+function selectTime () {
+  return new Promise((resolve, reject) => {
+    const times = document.querySelectorAll('.selectTime div input')
+    times[2].onclick = function (e) {
+      if (e.target.checked) {
+        times[0].checked = true
+        times[1].checked = true
+      } else {
+        times[0].checked = false
+        times[1].checked = false
+      }
+    }
+    for (let a = 0; a < times.length; a++) {
+      times[a].onchange = (e) => {
+        const { target: { checked } } = e
+        if (checked == false) {
+          times[2].checked = false
+        }
+        if (checked == true) {
+          if (a == 1) {
+            if (times[0].checked == true) {
+              times[2].checked = true
+            }
+          } else if (a == 0) {
+            if (times[1].checked == true) {
+              times[2].checked = true
+            }
+          }
+        }
+      }
+    }
+    resolve()
+  })
+}
+controlComment()
+selectTime()

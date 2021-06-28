@@ -115,59 +115,7 @@ window.onload = () => {
       resolve()
     })
   }
-  function controlComment () {
-    return new Promise((resolve, reject) => {
-      const catelis = document.querySelectorAll('.cate ul li ')
-      const contents = document.querySelectorAll('.showContent')
-      for (let a = 0; a < catelis.length; a++) {
-        catelis[a].onclick = function () {
-          for (let b = 0; b < catelis.length; b++) {
-            contents[b].style.display = 'none'
-            catelis[b].className = ''
-          }
-          catelis[a].className = 'active'
-          contents[a].style.display = 'block'
-        }
-      }
-      resolve()
-    })
-  }
-  function selectTime () {
-    return new Promise((resolve, reject) => {
-      const times = document.querySelectorAll('.selectTime div input')
-      times[2].onclick = function (e) {
-        if (e.target.checked) {
-          times[0].checked = true
-          times[1].checked = true
-        } else {
-          times[0].checked = false
-          times[1].checked = false
-        }
-      }
-      for (let a = 0; a < times.length; a++) {
-        times[a].onchange = (e) => {
-          const { target: { checked } } = e
-          if (checked == false) {
-            times[2].checked = false
-          }
-          if (checked == true) {
-            if (a == 1) {
-              if (times[0].checked == true) {
-                times[2].checked = true
-              }
-            } else if (a == 0) {
-              if (times[1].checked == true) {
-                times[2].checked = true
-              }
-            }
-          }
-        }
-      }
-      resolve()
-    })
-  }
   (async () => {
-    document.querySelector('.showContent').style.display = 'block'
     // 网页等待动画
     await waitfor()
     // 开始首页界面
@@ -175,7 +123,7 @@ window.onload = () => {
     // 开始渲染第一个轮播图
     await firstSwiper()
     // 为第一个轮播图的图片绑定点击事件转到网页
-    await BindUrl()
+    // await BindUrl()
     // 开始渲染第二个轮播图
     await twoSwiper()
     // 控制侧边栏
@@ -184,9 +132,9 @@ window.onload = () => {
       swiper2Resize()
     }
 
-    // 问答专区
-    await controlComment()
-    // 时间过滤
-    await selectTime()
+    // 问答专区  已移出
+    // await controlComment()
+    // 时间过滤  已移出
+    // await selectTime()
   })()
 }
