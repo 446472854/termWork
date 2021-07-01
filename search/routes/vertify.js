@@ -17,6 +17,7 @@ router.use('/', async (req, res, next) => {
     case 6: info.backCate = '其他'; break;
   }
   let a = await Myquery(strSql, [info.name, info.tel, info.backCate, info.feedContent, info.time, info.score])
+  console.log(info.score);
   if (a) {
     res.send('true')
   } else {

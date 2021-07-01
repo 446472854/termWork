@@ -97,13 +97,13 @@ window.onload = () => {
       }
     }
     // 第二个轮播图
-    const SwiperImg2 = document.querySelectorAll('.slide2 img')
-    const HtmlUrl = ['./vue.html', './node.html', './react.html']
-    for (let i = 0; i < SwiperImg2.length; i++) {
-      SwiperImg2[i].onclick = function () {
-        window.open(HtmlUrl[i], 'top')
-      }
-    }
+    // const SwiperImg2 = document.querySelectorAll('.slide2 img')
+    // const HtmlUrl = ['./vue.html', './node.html', './react.html']
+    // for (let i = 0; i < SwiperImg2.length; i++) {
+    //   SwiperImg2[i].onclick = function () {
+    //     window.open(HtmlUrl[i], 'top')
+    //   }
+    // }
   }
   var swiper2;
   function twoSwiper () {

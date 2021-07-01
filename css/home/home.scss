@@ -24,7 +24,16 @@ body {
 .slideBar {
   top: 0.234375rem + 0.390625rem !important;
 }
-
+@media screen and (max-width: 750px) {
+  .Nav_Left {
+    width: 0.46875rem !important;
+    justify-content: flex-start;
+    margin-left: 0.015625rem !important;
+  }
+  .Nav_End {
+    margin-left: 0.039063rem !important;
+  }
+}
 // 广告位置
 .adver {
   width: 100%;
@@ -37,7 +46,14 @@ body {
 .NavBar {
   margin-top: 0.234375rem;
 }
-
+.Nav_Left {
+  a {
+    color: black;
+    font-size: 12px;
+    margin-left: 0.078125rem;
+    text-decoration: none;
+  }
+}
 // 轮播图开始
 .swiper1,
 .swiper2 {
@@ -323,6 +339,11 @@ footer.container-fluid {
       a:hover {
         color: #42b983;
         text-decoration: underline;
+      }
+    }
+    .feedback {
+      a {
+        color: #337ab7 !important;
       }
     }
   }

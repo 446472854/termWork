@@ -26,7 +26,7 @@ window.onload = async () => {
         let searchData = {
           [url.split('=')[0]]: url.split('=')[1]
         }
-        let Html = 'http://wrt50sus.dongtaiyuming.net/search?' + url
+        let Html = 'http://czf4ut5r.dongtaiyuming.net/search?' + url
         // 开始请求数据
         axios.get(Html).then(res => {
           resolve(res.data)

@@ -44,11 +44,11 @@ class FeedBack {
   // 实时时间
   realTime () {
     let year = new Date().getFullYear()
-    let month = new Date().getMonth() + 1
-    let day = new Date().getDate()
-    let hours = new Date().getHours()
-    let minutes = new Date().getMinutes()
-    let seconds = new Date().getSeconds()
+    let month = (new Date().getMonth() + 1).toString().padStart(2, '0')
+    let day = (new Date().getDate()).toString().padStart(2, '0')
+    let hours = (new Date().getHours()).toString().padStart(2, '0')
+    let minutes = (new Date().getMinutes()).toString().padStart(2, '0')
+    let seconds = (new Date().getSeconds()).toString().padStart(2, '0')
     let week = new Date().getUTCDay()
     switch (week) {
       case 1: week = '一'; break;
@@ -59,6 +59,7 @@ class FeedBack {
       case 6: week = '六'; break;
       case 7: week = '日'; break;
     }
+
     let completeTime = year + '年' + month + '月' + day + '日' + ' ' + '周' + week + '  ' + hours + " : " + minutes + " : " + seconds
     this.time.value = completeTime
   }
@@ -109,7 +110,8 @@ class FeedBack {
         let selectValue = this.cate.value
         let content = this.feedBackCon.value
         let time = this.time.value
-        let Url = `http://wrt50sus.dongtaiyuming.net/vertify?name=${nameValue}&tel=${telValue}&backCate=${selectValue}&feedContent=${content}&time=${time}`
+        let score = this.scoreInput.value
+        let Url = `http://czf4ut5r.dongtaiyuming.net/vertify?name=${nameValue}&tel=${telValue}&backCate=${selectValue}&feedContent=${content}&time=${time}&score=${score}`
         await axios.get(Url).then(res => {
           let data = res.data
           if (data == true) {

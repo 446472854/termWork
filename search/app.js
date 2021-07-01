@@ -4,6 +4,7 @@ var path = require('path');
 // 路由中间件
 var indexRouter = require('./routes/index');
 var vertifyRouter = require('./routes/vertify')
+var bookRouter = require('./routes/book')
 var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -15,5 +16,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/search', indexRouter);
 app.use('/vertify', vertifyRouter)
+app.use('/book', bookRouter)
 app.listen(8080)
 module.exports = app;
